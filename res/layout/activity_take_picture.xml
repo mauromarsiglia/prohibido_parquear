@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <SurfaceView
+                android:id="@+id/camera_surface"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" >
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_back"
+                android:onClick="help"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/btn_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_pic"
+                android:onClick="take"
+                android:scaleType="fitCenter" />
+
+        </LinearLayout>
+    </LinearLayout>
+    
+
+</RelativeLayout>
