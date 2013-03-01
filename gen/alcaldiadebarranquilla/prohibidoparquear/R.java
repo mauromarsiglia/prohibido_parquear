@@ -27,9 +27,10 @@ public final class R {
         public static final int btn_ok=0x7f070002;
         public static final int btn_pic=0x7f07000a;
         public static final int button1=0x7f070005;
+        public static final int button2=0x7f07000b;
         public static final int camera_surface=0x7f070009;
         public static final int image_preview=0x7f070006;
-        public static final int menu_settings=0x7f07000b;
+        public static final int menu_settings=0x7f07000c;
         public static final int progressBar1=0x7f070000;
         public static final int textView1=0x7f070004;
         public static final int text_direccion=0x7f070001;
@@ -48,19 +49,19 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int app_title=0x7f040002;
-        public static final int dialog_no_gps_btn_active=0x7f040016;
-        public static final int dialog_no_gps_btn_direccion=0x7f040018;
-        public static final int dialog_no_gps_btn_reintentar=0x7f040017;
-        public static final int dialog_no_gps_content=0x7f040015;
+        public static final int dialog_no_gps_btn_active=0x7f040017;
+        public static final int dialog_no_gps_btn_direccion=0x7f040019;
+        public static final int dialog_no_gps_btn_reintentar=0x7f040018;
+        public static final int dialog_no_gps_content=0x7f040016;
         /**  Dialog GPS 
          */
-        public static final int dialog_no_gps_title=0x7f040014;
-        public static final int dialog_no_internet_btn_cancelar=0x7f04001c;
-        public static final int dialog_no_internet_btn_reintentar=0x7f04001b;
-        public static final int dialog_no_internet_content=0x7f04001a;
+        public static final int dialog_no_gps_title=0x7f040015;
+        public static final int dialog_no_internet_btn_cancelar=0x7f04001d;
+        public static final int dialog_no_internet_btn_reintentar=0x7f04001c;
+        public static final int dialog_no_internet_content=0x7f04001b;
         /**  Dialog INTERNET 
          */
-        public static final int dialog_no_internet_title=0x7f040019;
+        public static final int dialog_no_internet_title=0x7f04001a;
         public static final int direccion_layout_back_button=0x7f04000d;
         public static final int direccion_layout_error_input=0x7f04000e;
         public static final int direccion_layout_ok_button=0x7f04000c;
@@ -84,6 +85,7 @@ public final class R {
         /**  Take a Picture Layout 
          */
         public static final int take_a_picture_layout_title=0x7f040006;
+        public static final int thanks_layout_title_btn_exit=0x7f040014;
         public static final int thanks_layout_title_btn_nuevo=0x7f040013;
         public static final int thanks_layout_title_error=0x7f040010;
         /**  Thanks Layout 
