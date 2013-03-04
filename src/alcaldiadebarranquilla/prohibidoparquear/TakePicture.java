@@ -110,7 +110,8 @@ public class TakePicture extends Activity implements
 								scaled_bmp.getHeight(), matrix, true);
 
 						// Save the image and call preview
-						Manager.getInstance().setImage(scaled_with_orientation);
+						Manager.getInstance().addImage(scaled_with_orientation);
+						
 						AppGlobal.getInstance().dispatcher.open(
 								TakePicture.this, "preview", true);
 					} catch (Exception e) {

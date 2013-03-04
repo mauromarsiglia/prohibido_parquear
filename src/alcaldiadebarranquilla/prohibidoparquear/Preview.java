@@ -48,7 +48,7 @@ public class Preview extends Activity {
 		});
 
 		// The Original image
-		Bitmap image = Manager.getInstance().getImage();
+		Bitmap image = Manager.getInstance().getLastImage();
 
 		// set the image
 		image_preview = (ImageView) findViewById(R.id.image_preview);

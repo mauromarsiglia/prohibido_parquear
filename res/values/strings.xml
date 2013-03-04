@@ -37,7 +37,7 @@
     <string name="thanks_layout_title_ok_error">No se pudo enviar el reporte.</string>
     <string name="thanks_layout_title_btn_nuevo">Nuevo Reporte</string>
     <string name="thanks_layout_title_btn_exit">Salir</string>
-	
+    
 	<!-- Dialog GPS -->
 	<string name="dialog_no_gps_title">¡Warning GPS!</string>
 	<string name="dialog_no_gps_content">No fué posible establecer la ubicación del lugar, la ubicación es detectada a través de la Red Celular y Wifi.\n¿Desea verificar la configuración de ubicación por Red?.</string>
@@ -50,5 +50,7 @@
 	<string name="dialog_no_internet_content">No fué posible enviar el reporte. Por favor verifique su conexión a internet e inténtelo nuevamente.</string>
     <string name="dialog_no_internet_btn_reintentar">Reintentar</string>
     <string name="dialog_no_internet_btn_cancelar">Cancelar</string>
+    <string name="dialog_no_internet_error_status_false_send_event">Ocurrio un error a intentar enviar el reporte al servidor\nPor favor intente más tarde.</string>
+    
 
 </resources>
