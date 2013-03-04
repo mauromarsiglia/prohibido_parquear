@@ -24,18 +24,19 @@ public final class R {
         public static final int btn_back=0x7f070003;
         public static final int btn_cancel=0x7f070007;
         public static final int btn_done=0x7f070008;
+        public static final int btn_next=0x7f07000b;
         public static final int btn_ok=0x7f070002;
         public static final int btn_pic=0x7f07000a;
         public static final int button1=0x7f070005;
-        public static final int button2=0x7f07000d;
+        public static final int button2=0x7f07000e;
         public static final int camera_surface=0x7f070009;
         public static final int image_preview=0x7f070006;
-        public static final int menu_settings=0x7f07000e;
+        public static final int menu_settings=0x7f07000f;
         public static final int progressBar1=0x7f070000;
         public static final int textView1=0x7f070004;
         public static final int text_direccion=0x7f070001;
-        public static final int thanks=0x7f07000c;
-        public static final int thannks_container=0x7f07000b;
+        public static final int thanks=0x7f07000d;
+        public static final int thannks_container=0x7f07000c;
     }
     public static final class layout {
         public static final int acticity_geographic_location=0x7f030000;
@@ -58,6 +59,11 @@ public final class R {
         /**  Dialog GPS 
          */
         public static final int dialog_no_gps_title=0x7f040016;
+        public static final int dialog_no_image_btn_active=0x7f040022;
+        public static final int dialog_no_image_content=0x7f040021;
+        /**  Dialog NO IMAGE 
+         */
+        public static final int dialog_no_image_title=0x7f040020;
         public static final int dialog_no_internet_btn_cancelar=0x7f04001e;
         public static final int dialog_no_internet_btn_reintentar=0x7f04001d;
         public static final int dialog_no_internet_content=0x7f04001c;

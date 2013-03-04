@@ -49,6 +49,14 @@
                 android:background="@drawable/btn_pic"
                 android:onClick="take"
                 android:scaleType="fitCenter" />
+            
+            <ImageButton
+                android:id="@+id/btn_next"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_next"
+                android:onClick="next"
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
     </LinearLayout>

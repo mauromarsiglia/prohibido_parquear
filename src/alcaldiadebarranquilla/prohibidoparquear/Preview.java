@@ -33,7 +33,7 @@ public class Preview extends Activity {
 			@Override
 			public void onClick(View view) {
 				AppGlobal.getInstance().dispatcher.open(
-						Preview.this, "geographic", true);
+						Preview.this, "take", true);
 			}
 		});
 

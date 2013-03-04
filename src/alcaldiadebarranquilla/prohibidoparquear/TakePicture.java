@@ -11,6 +11,9 @@ import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
 import alcaldiadebarranquilla.prohibidoparquear.controller.Params;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -26,6 +29,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -131,6 +135,44 @@ public class TakePicture extends Activity implements
 	
 	public void take(View view){
 		takeAPicAction();
+	}
+	
+	public void next(View view){
+		//preguntar si hay imagenes
+		
+		List<Bitmap> images = Manager.getInstance().getImages();
+		
+		if(images!=null){
+			if(!images.isEmpty()){
+				AppGlobal.getInstance().dispatcher.open(TakePicture.this, "geographic", true);
+			}else{
+				//mostrar mensaje de debe tomar por lo menos una foto
+				displayDialogError();
+			}
+		}else{
+			//mostrar mensaje de debe tomar por lo menos una foto
+			displayDialogError();
+		}
+		
+	}
+	
+	public void displayDialogError(){
+		
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.dialog_no_image_title)
+				.setTitle(R.string.dialog_no_image_content)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setCancelable(false)
+				.setPositiveButton(R.string.dialog_no_gps_btn_active,
+						new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								dialog.dismiss();
+							}
+						});
+		final AlertDialog alert = builder.create();
+		alert.show();
+		
 	}
 	
 	protected void setDisplayOrientation(Camera camera, int angle) {

@@ -53,5 +53,9 @@
     <string name="dialog_no_internet_btn_cancelar">Cancelar</string>
     <string name="dialog_no_internet_error_status_false_send_event">Ocurrio un error a intentar enviar el reporte al servidor\nPor favor intente más tarde.</string>
     
+    <!-- Dialog NO IMAGE -->
+	<string name="dialog_no_image_title">¡Warning IMAGE!</string>
+	<string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
+    <string name="dialog_no_image_btn_active">OK</string>
 
 </resources>
