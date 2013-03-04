@@ -51,20 +51,20 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int app_title=0x7f040002;
-        public static final int dialog_no_gps_btn_active=0x7f040017;
-        public static final int dialog_no_gps_btn_direccion=0x7f040019;
-        public static final int dialog_no_gps_btn_reintentar=0x7f040018;
-        public static final int dialog_no_gps_content=0x7f040016;
+        public static final int dialog_no_gps_btn_active=0x7f040018;
+        public static final int dialog_no_gps_btn_direccion=0x7f04001a;
+        public static final int dialog_no_gps_btn_reintentar=0x7f040019;
+        public static final int dialog_no_gps_content=0x7f040017;
         /**  Dialog GPS 
          */
-        public static final int dialog_no_gps_title=0x7f040015;
-        public static final int dialog_no_internet_btn_cancelar=0x7f04001d;
-        public static final int dialog_no_internet_btn_reintentar=0x7f04001c;
-        public static final int dialog_no_internet_content=0x7f04001b;
-        public static final int dialog_no_internet_error_status_false_send_event=0x7f04001e;
+        public static final int dialog_no_gps_title=0x7f040016;
+        public static final int dialog_no_internet_btn_cancelar=0x7f04001e;
+        public static final int dialog_no_internet_btn_reintentar=0x7f04001d;
+        public static final int dialog_no_internet_content=0x7f04001c;
+        public static final int dialog_no_internet_error_status_false_send_event=0x7f04001f;
         /**  Dialog INTERNET 
          */
-        public static final int dialog_no_internet_title=0x7f04001a;
+        public static final int dialog_no_internet_title=0x7f04001b;
         public static final int direccion_layout_back_button=0x7f04000d;
         public static final int direccion_layout_error_input=0x7f04000e;
         public static final int direccion_layout_ok_button=0x7f04000c;
@@ -88,14 +88,15 @@ public final class R {
         /**  Take a Picture Layout 
          */
         public static final int take_a_picture_layout_title=0x7f040006;
-        public static final int thanks_layout_title_btn_exit=0x7f040014;
-        public static final int thanks_layout_title_btn_nuevo=0x7f040013;
+        public static final int thanks_layout_espere_texto=0x7f040011;
+        public static final int thanks_layout_title_btn_exit=0x7f040015;
+        public static final int thanks_layout_title_btn_nuevo=0x7f040014;
         public static final int thanks_layout_title_error=0x7f040010;
         /**  Thanks Layout 
          */
         public static final int thanks_layout_title_ok=0x7f04000f;
-        public static final int thanks_layout_title_ok_content=0x7f040011;
-        public static final int thanks_layout_title_ok_error=0x7f040012;
+        public static final int thanks_layout_title_ok_content=0x7f040012;
+        public static final int thanks_layout_title_ok_error=0x7f040013;
     }
     public static final class style {
         /** 

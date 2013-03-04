@@ -33,6 +33,7 @@
     <!-- Thanks Layout -->
     <string name="thanks_layout_title_ok">Gracias</string>
     <string name="thanks_layout_title_error">Error</string>
+    <string name="thanks_layout_espere_texto">Espere por favor&#8230;</string>
     <string name="thanks_layout_title_ok_content">Su aporte es de vital importancia para nuestra ciudad.</string>
     <string name="thanks_layout_title_ok_error">No se pudo enviar el reporte.</string>
     <string name="thanks_layout_title_btn_nuevo">Nuevo Reporte</string>

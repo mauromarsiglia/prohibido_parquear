@@ -11,9 +11,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
-import alcaldiadebarranquilla.prohibidoparquear.restfull.DoRest;
-import alcaldiadebarranquilla.prohibidoparquear.restfull.DoRestEventListener;
-import alcaldiadebarranquilla.prohibidoparquear.restfull.DoRest.Verbs;
+import alcaldiadebarranquilla.prohibidoparquear.restful.DoRest;
+import alcaldiadebarranquilla.prohibidoparquear.restful.DoRestEventListener;
+import alcaldiadebarranquilla.prohibidoparquear.restful.DoRest.Verbs;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppConfig;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
