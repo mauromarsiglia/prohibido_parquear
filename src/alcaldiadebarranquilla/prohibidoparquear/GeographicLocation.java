@@ -24,6 +24,7 @@ public class GeographicLocation extends Activity implements LocationListener{
 
 	private LocationManager manager;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acticity_geographic_location);
@@ -57,6 +58,7 @@ public class GeographicLocation extends Activity implements LocationListener{
 				.setCancelable(false)
 				.setPositiveButton(R.string.dialog_no_gps_btn_active,
 						new DialogInterface.OnClickListener() {
+							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								startActivity(new Intent(
@@ -65,6 +67,7 @@ public class GeographicLocation extends Activity implements LocationListener{
 						})
 				.setNegativeButton(R.string.dialog_no_gps_btn_direccion,
 						new DialogInterface.OnClickListener() {
+							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								AppGlobal.getInstance().dispatcher.open(

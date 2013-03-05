@@ -24,27 +24,29 @@ public final class R {
         public static final int btn_back=0x7f070003;
         public static final int btn_cancel=0x7f070007;
         public static final int btn_done=0x7f070008;
-        public static final int btn_next=0x7f07000b;
+        public static final int btn_next=0x7f07000c;
         public static final int btn_ok=0x7f070002;
-        public static final int btn_pic=0x7f07000a;
+        public static final int btn_pic=0x7f07000b;
         public static final int button1=0x7f070005;
-        public static final int button2=0x7f07000e;
-        public static final int camera_surface=0x7f070009;
+        public static final int button2=0x7f07000f;
+        public static final int camera_surface=0x7f07000a;
+        public static final int imageView1=0x7f070009;
         public static final int image_preview=0x7f070006;
-        public static final int menu_settings=0x7f07000f;
+        public static final int menu_settings=0x7f070010;
         public static final int progressBar1=0x7f070000;
         public static final int textView1=0x7f070004;
         public static final int text_direccion=0x7f070001;
-        public static final int thanks=0x7f07000d;
-        public static final int thannks_container=0x7f07000c;
+        public static final int thanks=0x7f07000e;
+        public static final int thannks_container=0x7f07000d;
     }
     public static final class layout {
         public static final int acticity_geographic_location=0x7f030000;
         public static final int activity_address=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_preview=0x7f030003;
-        public static final int activity_take_picture=0x7f030004;
-        public static final int activity_thanks=0x7f030005;
+        public static final int activity_splashscreen=0x7f030004;
+        public static final int activity_take_picture=0x7f030005;
+        public static final int activity_thanks=0x7f030006;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
@@ -80,6 +82,7 @@ public final class R {
         /**  Geographic Location Layout 
          */
         public static final int graphics_layout_title=0x7f04000a;
+        public static final int index_informacionImagen=0x7f040023;
         public static final int main_layout_btn_ok_text=0x7f040005;
         public static final int main_layout_content=0x7f040004;
         /**  Main Layout 

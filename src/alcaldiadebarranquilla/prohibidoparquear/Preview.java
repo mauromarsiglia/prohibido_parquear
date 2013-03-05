@@ -23,6 +23,7 @@ public class Preview extends Activity {
 	private ImageButton btn_cancel;
 	private ImageView image_preview;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_preview);

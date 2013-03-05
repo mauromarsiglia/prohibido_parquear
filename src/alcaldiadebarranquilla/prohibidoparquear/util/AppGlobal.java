@@ -53,6 +53,7 @@ public class AppGlobal {
 		builder.setTitle(title);
 		builder.setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(
 				"De acuerdo!", new OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						alertDialog.dismiss();
 						alertDialog = null;

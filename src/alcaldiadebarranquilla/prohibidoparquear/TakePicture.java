@@ -13,7 +13,6 @@ import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -29,7 +28,6 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -162,6 +160,7 @@ public class TakePicture extends Activity implements
 				.setCancelable(false)
 				.setPositiveButton(R.string.dialog_no_gps_btn_active,
 						new DialogInterface.OnClickListener() {
+							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								dialog.dismiss();
@@ -254,6 +253,7 @@ public class TakePicture extends Activity implements
 
 	private Handler handler = new Handler();
 	private final Runnable loadCamera = new Runnable() {
+		@Override
 		public void run() {
 			loadCamera();
 		}
@@ -265,8 +265,8 @@ public class TakePicture extends Activity implements
 		if (newWidth >= origWidth) {
 			newWidth = origWidth;
 		}
-		int tNH = (int) Math.round(((float) origHeight / (float) origWidth)
-				* (float) newWidth);
+		int tNH = Math.round(((float) origHeight / (float) origWidth)
+				* newWidth);
 		Bitmap scaled = Bitmap.createScaledBitmap(bmp, newWidth, tNH, true);
 		return scaled;
 	}
