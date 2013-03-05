@@ -51,6 +51,12 @@ public class Manager {
 	public void clearImages(){
 		this.images.clear();
 	}
+	
+	public void deleteLastImage(){
+		if(!this.images.isEmpty()){
+			this.images.remove(this.images.size()-1);
+		}
+	}
 
 	public String getLatitude() {
 		return latitude;

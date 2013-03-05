@@ -138,7 +138,6 @@ public class TakePicture extends Activity implements
 	}
 	
 	public void next(View view){
-		//preguntar si hay imagenes
 		
 		List<Bitmap> images = Manager.getInstance().getImages();
 		
@@ -146,12 +145,10 @@ public class TakePicture extends Activity implements
 			if(!images.isEmpty()){
 				AppGlobal.getInstance().dispatcher.open(TakePicture.this, "geographic", true);
 			}else{
-				//mostrar mensaje de debe tomar por lo menos una foto
-				displayDialogError();
+				this.displayDialogError();
 			}
 		}else{
-			//mostrar mensaje de debe tomar por lo menos una foto
-			displayDialogError();
+			this.displayDialogError();
 		}
 		
 	}
@@ -316,7 +313,7 @@ public class TakePicture extends Activity implements
 	            float min_movement = 1E-6f;
 	            if (movement > min_movement) {
 	                if (current_time - last_movement >= limit) {
-	                	Log.i(TAG, "X: "+curX+" Y: "+curY+" Z: "+curZ);
+	                	//Log.i(TAG, "X: "+curX+" Y: "+curY+" Z: "+curZ);
 	                }
 	                last_movement = current_time;
 	            }

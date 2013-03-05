@@ -22,6 +22,8 @@ import android.provider.Settings;
  */
 public class GeographicLocation extends Activity implements LocationListener{
 
+	private LocationManager manager;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acticity_geographic_location);
@@ -29,7 +31,7 @@ public class GeographicLocation extends Activity implements LocationListener{
 	
 	private void setGPSLocation(){
 		
-		LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		this.manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		
 		if (!manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 			buildAlertMessageNoGps();
@@ -83,9 +85,10 @@ public class GeographicLocation extends Activity implements LocationListener{
 			Manager.getInstance().setLongitude(Double.toString(location.getLongitude()));
 			Manager.getInstance().setLatitude(Double.toString(location.getLatitude()));
 			
-			//Ir a gracias
-			AppGlobal.getInstance().dispatcher.open(
-					GeographicLocation.this, "thanks", true);
+			this.manager.removeUpdates(this);
+			//Ir a gracias, puede ser aquí el error
+			AppGlobal.getInstance().dispatcher.open(GeographicLocation.this, "thanks", true);
+			
 		}
 		
 	}

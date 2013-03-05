@@ -49,6 +49,10 @@ public class DoRest {
 	private Verbs verb;
 
 	private DoRestEventListener listener;
+	
+	public DoRest(){
+		
+	}
 
 	private Handler doHandler = new Handler() {
 		@Override
@@ -143,6 +147,7 @@ public class DoRest {
 			httrest.setEntity(body);
 
 			try {
+				Log.i(TAG, "--------------------------------------------------");
 				Log.i(TAG, "URL: " + url);
 				Log.i(TAG, "BODY: " + body.toString());
 				response = httpclient.execute(httrest);
@@ -159,47 +164,6 @@ public class DoRest {
 		}
 	}
 	
-	private String saveImage(Bitmap image) {
-
-		String the_path = Environment.getExternalStorageDirectory()
-				+ File.separator + "prohibidoparquear";
-		File root = new File(the_path);
-		boolean isReady = root.exists();
-		if (!isReady) {
-			try {
-				if (Environment.getExternalStorageDirectory().canWrite()) {
-					root.mkdirs();
-					isReady = true;
-				}
-			} catch (Exception e) {
-				isReady = false;
-			}
-		} else {
-			String uid = UUID.randomUUID().toString();
-			String the_file = the_path + File.separator + uid + ".jpg";
-			OutputStream stream;
-			boolean done = false;
-			try {
-				stream = new FileOutputStream(the_file);
-				image.compress(CompressFormat.JPEG, 80, stream);
-				stream.flush();
-				stream.close();
-				done = true;
-			} catch (FileNotFoundException e) {
-				done = false;
-			} catch (IOException e) {
-				done = false;
-			} finally {
-				if (done) {
-					return the_file;
-				}
-			}
-
-		}
-
-		return null;
-	}
-
 	public DoRest(String url, Verbs verb, List<NameValuePair> params, List<Bitmap> images) {
 		
 		this.url = url;

@@ -25,31 +25,51 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import alcaldiadebarranquilla.prohibidoparquear.R;
+import alcaldiadebarranquilla.prohibidoparquear.TakePicture;
+import alcaldiadebarranquilla.prohibidoparquear.Thanks;
+import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
+import alcaldiadebarranquilla.prohibidoparquear.util.AppConfig;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 
 /**
  * @author Luster
  *
  */
 public class DoRestImages {
-	
-	/*private static final int GLOBAL_ERROR = 1;
+	/*
+	private static final int GLOBAL_ERROR = 1;
 	private static final int COMPLETE_UPLOAD = 2;
 	private static final int IMAGE_ERROR = 3;
 	private static final String TAG = "DoRestImages";
+	private Context context;
+	
+	public DoRestImages(Context context){
+		this.context = context;
+	}
+	
+
 	
 	private void sendData() {
 		// save the report
-		(new SaveInBackground()).execute("");
+		new SaveInBackground().execute("");
 	}
 	
 	public HttpResponse postIncident(String url, MultipartEntity entity) {
@@ -84,17 +104,6 @@ public class DoRestImages {
 		@Override
 		protected Void doInBackground(String... params) {
 
-			// Date params
-			Date date = Calendar.getInstance().getTime();
-			SimpleDateFormat submitFormat = new SimpleDateFormat(
-					"MM/dd/yyyy hh:mm:ss aa", Locale.US);
-			String string_date = submitFormat.format(date);
-			String dates[] = string_date.split(" ");
-			String time[] = dates[1].split(":");
-
-			// Categories params
-			String categories = "1";
-
 			// Build params list
 			MultipartEntity entity = new MultipartEntity(
 					HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -102,48 +111,57 @@ public class DoRestImages {
 			boolean entityDone = true;
 			
 			try {
-				entity.addPart("task", new StringBody("report"));
-				entity.addPart("incident_title", new StringBody(ANDROID_REPORT));
-				entity.addPart("incident_description", new StringBody(description));
-				entity.addPart("incident_date", new StringBody(dates[0]));
-				entity.addPart("incident_hour", new StringBody(time[0]));
-				entity.addPart("incident_minute", new StringBody(time[1]));
-				String ampm_s = dates[2].toLowerCase();
-				entity.addPart("incident_ampm", new StringBody(ampm_s));
-				entity.addPart("incident_category", new StringBody(categories));
-				entity.addPart("latitude", new StringBody(latitude));
-				entity.addPart("longitude", new StringBody(longitude));
-				entity.addPart("location_name", new StringBody(address_description));
+				
+				String addres = Manager.getInstance().getAddress();
+				if(addres == null){
+					addres = "";
+				}
+				
+				entity.addPart("application_token", new StringBody(AppConfig.PUSHER_APP_KEY));
+				entity.addPart("key", new StringBody(AppConfig.PUSHER_KEY));
+				entity.addPart("event[longitude]", new StringBody(Manager.getInstance().getLongitude()));
+				entity.addPart("event[latitude]", new StringBody(Manager.getInstance().getLatitude()));
+				entity.addPart("event[device_model]", new StringBody(Manager.getInstance().PhoneModel+" - "+Manager.getInstance().AndroidVersion));
+				entity.addPart("event[category_id]", new StringBody(Manager.getInstance().getSelectedCategory()+""));
+				entity.addPart("event[address_description]", new StringBody(addres));
+				entity.addPart("event[data]", new StringBody(""));
+				entity.addPart("event[description]", new StringBody(""));
+				
 				entityDone = true;
+				
 			} catch (UnsupportedEncodingException e) {
 				entityDone = false;
 			} finally {
+				
 				if (entityDone) {
-					// Save the file
-					if (AppGlobal.getInstance().image != null) {
-						String imagePath = saveImage(AppGlobal.getInstance().image);
+					// Save the files
+					
+					for(Bitmap image : Manager.getInstance().getImages()){
+						
+						String imagePath = saveImage(image);
 						Log.i(TAG, "Image saved at: " + imagePath);
+						
 						if (imagePath != null) {
 							FileBody body = new FileBody(
 									new File(imagePath));
 							String tencodign = body.getTransferEncoding();
 							Log.i(TAG, tencodign);
-							entity.addPart("incident_photo[]", body);
+							entity.addPart("event[photos_attributes][][image]", body);
 						} else {
 							Log.e(TAG, "Error guardando imagen");
-							responseHandler.sendEmptyMessage(IMAGE_ERROR);
 						}
+						
 					}
-
+					
 					// Call to post incident
-					if (postIncident("http://190.145.115.12:8015/ushahidi/api",
-							entity) != null) {
+					if (postIncident(AppConfig.ADD_EVENT_URL, entity) != null) {
 						Message msg = new Message();
 						msg.what = COMPLETE_UPLOAD;
 						responseHandler.sendMessage(msg);
 					} else {
 						responseHandler.sendEmptyMessage(GLOBAL_ERROR);
 					}
+					
 				} else {
 					responseHandler.sendEmptyMessage(GLOBAL_ERROR);
 				}
@@ -193,7 +211,33 @@ public class DoRestImages {
 			return null;
 		}
 
-	}*/
+	}
 	
+	private Dialog crearDialogoAlerta(){
+		
+    	AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    	
+    	builder.setTitle(R.string.dialog_no_internet_title);
+    	builder.setMessage(R.string.dialog_no_internet_content);
+    	builder.setPositiveButton(R.string.dialog_no_internet_btn_reintentar, new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				new SaveInBackground().execute("");
+			}
+		});
+    	builder.setNegativeButton(R.string.dialog_no_internet_btn_cancelar, new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.cancel();
+				Intent i = new Intent(context, TakePicture.class);
+				context.startActivity(i);
+			}
+		});
+    	
+    	return builder.create();
+    	
+    }
+	*/
 
 }
