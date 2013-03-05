@@ -4,32 +4,30 @@
     <string name="app_name">Parqueo</string>
     <string name="menu_settings">Settings</string>
     <string name="app_title">Prohibido Parquear</string>
-    
+
     <!-- Main Layout -->
     <string name="main_layout_title">Consideraciones</string>
-    <string name="main_layout_content">
-        Al tomar la foto verifique que en la imagen aparezca claramente la placa del vehículo y la señal de prohibido parquear, 
-        Además la aplicación requiere de internet para enviar la información.
-    </string>
-	<string name="main_layout_btn_ok_text">OK</string>
-	
-	<!-- Take a Picture Layout -->
-	<string name="take_a_picture_layout_title">Tome una foto</string>
-	<string name="take_a_picture_layout_btn_help">Ayuda</string>
-	<string name="take_a_picture_layout_content_error_picture_type">No fue posible procesar la fotografía, verifica que has seleccionado una imagen de el álbum de fotos de la cámara e inténtalo nuevamente. Algunas imágenes hacen parte de álbumes que están en internet.</string>
-	
-	<!-- Preview Layout -->
+    <string name="main_layout_content">        Al tomar la foto verifique que en la imagen aparezca claramente la placa del vehículo y la señal de prohibido parquear, 
+        Además la aplicación requiere de internet para enviar la información.</string>
+    <string name="main_layout_btn_ok_text">OK</string>
+
+    <!-- Take a Picture Layout -->
+    <string name="take_a_picture_layout_title">Tome una foto</string>
+    <string name="take_a_picture_layout_btn_help">Ayuda</string>
+    <string name="take_a_picture_layout_content_error_picture_type">No fue posible procesar la fotografía, verifica que has seleccionado una imagen de el álbum de fotos de la cámara e inténtalo nuevamente. Algunas imágenes hacen parte de álbumes que están en internet.</string>
+
+    <!-- Preview Layout -->
     <string name="preview_layout_title">¿Está Bien?</string>
-	
+
     <!-- Geographic Location Layout -->
     <string name="graphics_layout_title">Guardando su ubicación</string>
-    
-	<!-- Dirección Layout -->
+
+    <!-- Dirección Layout -->
     <string name="direccion_layout_title">Ingrese dirección</string>
     <string name="direccion_layout_ok_button">Enviar</string>
     <string name="direccion_layout_back_button">Atras</string>
     <string name="direccion_layout_error_input">Debe ingresar la dirección</string>
-    
+
     <!-- Thanks Layout -->
     <string name="thanks_layout_title_ok">Gracias</string>
     <string name="thanks_layout_title_error">Error</string>
@@ -38,25 +36,29 @@
     <string name="thanks_layout_title_ok_error">No se pudo enviar el reporte.</string>
     <string name="thanks_layout_title_btn_nuevo">Nuevo Reporte</string>
     <string name="thanks_layout_title_btn_exit">Salir</string>
-    
-	<!-- Dialog GPS -->
-	<string name="dialog_no_gps_title">¡Warning GPS!</string>
-	<string name="dialog_no_gps_content">No fué posible establecer la ubicación del lugar, la ubicación es detectada a través de la Red Celular y Wifi.\n¿Desea verificar la configuración de ubicación por Red?.</string>
+
+    <!-- Dialog GPS -->
+    <string name="dialog_no_gps_title">¡Warning GPS!</string>
+    <string name="dialog_no_gps_content">No fué posible establecer la ubicación del lugar, la ubicación es detectada a través de la Red Celular y Wifi.\n¿Desea verificar la configuración de ubicación por Red?.</string>
     <string name="dialog_no_gps_btn_active">Active</string>
     <string name="dialog_no_gps_btn_reintentar">Reintentar</string>
     <string name="dialog_no_gps_btn_direccion">Dirección</string>
-    
+
     <!-- Dialog INTERNET -->
-	<string name="dialog_no_internet_title">¡Error de red!</string>
-	<string name="dialog_no_internet_content">No fué posible enviar el reporte. Por favor verifique su conexión a internet e inténtelo nuevamente.</string>
+    <string name="dialog_no_internet_title">¡Error de red!</string>
+    <string name="dialog_no_internet_content">No fué posible enviar el reporte. Por favor verifique su conexión a internet e inténtelo nuevamente.</string>
     <string name="dialog_no_internet_btn_reintentar">Reintentar</string>
     <string name="dialog_no_internet_btn_cancelar">Cancelar</string>
     <string name="dialog_no_internet_error_status_false_send_event">Ocurrio un error a intentar enviar el reporte al servidor\nPor favor intente más tarde.</string>
-    
+
     <!-- Dialog NO IMAGE -->
-	<string name="dialog_no_image_title">¡Warning IMAGE!</string>
-	<string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
+    <string name="dialog_no_image_title">¡Warning IMAGE!</string>
+    <string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
     <string name="dialog_no_image_btn_active">OK</string>
     <string name="index_informacionImagen">Prohibido parquear</string>
+    <string name="splashscreen_informacion_imagen">Prohibido parquear</string>
+    <string name="title_activity_transparent">TransparentActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

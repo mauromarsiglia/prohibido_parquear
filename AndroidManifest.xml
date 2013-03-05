@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -19,37 +19,45 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-       <activity
-            android:name=".Splashscreen"
-            android:label="@string/app_name" 
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Splashscreen"
+            android:label="@string/app_name"
             android:noHistory="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		
-      <activity 
-            android:name="Main"
-            android:label="@string/preview_layout_title"></activity> 
-       <activity 
-            android:name="Preview"
-            android:label="@string/preview_layout_title"></activity>
-        
-        <activity 
-            android:name="TakePicture"
-            android:label="@string/take_a_picture_layout_title"></activity>
-        <activity 
-            android:name="Thanks"
-            android:label="@string/thanks_layout_title_ok"></activity>
-        <activity 
-            android:name="Address"
-            android:label="@string/direccion_layout_title"></activity>
-        <activity 
-            android:name="GeographicLocation"
-            android:label="@string/graphics_layout_title"></activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Main"
+            android:label="@string/preview_layout_title" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Preview"
+            android:label="@string/preview_layout_title" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.TakePicture"
+            android:label="@string/take_a_picture_layout_title" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Thanks"
+            android:label="@string/thanks_layout_title_ok" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Address"
+            android:label="@string/direccion_layout_title" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.GeographicLocation"
+            android:label="@string/graphics_layout_title" >
+        </activity>
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.TransparentActivity"
+            android:label="@string/title_activity_transparent" >
+        </activity>
     </application>
 
 </manifest>
