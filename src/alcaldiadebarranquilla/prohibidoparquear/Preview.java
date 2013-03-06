@@ -43,8 +43,8 @@ public class Preview extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				AppGlobal.getInstance().dispatcher.open(Preview.this, "take", true);
 				Manager.getInstance().deleteLastImage();
+				AppGlobal.getInstance().dispatcher.open(Preview.this, "take", true);
 			}
 		});
 
