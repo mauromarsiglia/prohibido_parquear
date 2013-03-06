@@ -119,11 +119,13 @@ public class TakePicture extends Activity implements
 	}
 	
 	public void help(View view){
+		
 		Params p = new Params();
 		p.AddParam("take", "1");
 		Bundle parametros = getIntent().getExtras();
 		p.AddParam("primeravez", parametros.getString("primeravez"));
 		AppGlobal.getInstance().dispatcher.open(TakePicture.this, "main", true, p);
+		
 	}
 	
 	public void take(View view){

@@ -12,6 +12,7 @@ import android.view.View;
 public class Main extends Activity {
 	
 	private String primeravez="no";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
