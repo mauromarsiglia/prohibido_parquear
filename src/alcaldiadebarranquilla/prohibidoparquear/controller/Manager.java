@@ -17,6 +17,7 @@ public class Manager {
 	public final String PhoneModel = android.os.Build.MODEL;
 	public final String AndroidVersion = android.os.Build.VERSION.RELEASE;
 	private int selectedCategory;
+	private Bitmap imageTemp;
 	private List<Bitmap> images;
 	private String latitude;
 	private String longitude;
@@ -40,8 +41,10 @@ public class Manager {
 		return images;
 	}
 
-	public void addImage(Bitmap image) {
-		this.images.add(image);
+	public void addImage() {
+		if(imageTemp!=null)
+			this.images.add(this.imageTemp);
+		imageTemp = null;
 	}
 	
 	public Bitmap getLastImage(){
@@ -52,12 +55,6 @@ public class Manager {
 		this.images.clear();
 	}
 	
-	public void deleteLastImage(){
-		if(!this.images.isEmpty()){
-			this.images.remove(this.images.size()-1);
-		}
-	}
-
 	public String getLatitude() {
 		return latitude;
 	}
@@ -98,6 +95,18 @@ public class Manager {
 		this.responseEvent = responseEvent;
 	}
 	
-	
+	/**
+	 * @return the imageTemp
+	 */
+	public Bitmap getImageTemp() {
+		return imageTemp;
+	}
+
+	/**
+	 * @param imageTemp the imageTemp to set
+	 */
+	public void setImageTemp(Bitmap imageTemp) {
+		this.imageTemp = imageTemp;
+	}
 
 }

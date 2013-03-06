@@ -33,6 +33,7 @@ public class Preview extends Activity {
 
 			@Override
 			public void onClick(View view) {
+				Manager.getInstance().addImage();
 				AppGlobal.getInstance().dispatcher.open(
 						Preview.this, "take", true);
 			}
@@ -43,24 +44,17 @@ public class Preview extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Manager.getInstance().deleteLastImage();
 				AppGlobal.getInstance().dispatcher.open(Preview.this, "take", true);
 			}
 		});
 
 		// The Original image
-		Bitmap image = Manager.getInstance().getLastImage();
+		Bitmap image = Manager.getInstance().getImageTemp();
 
 		// set the image
 		image_preview = (ImageView) findViewById(R.id.image_preview);
 		image_preview.setImageBitmap(image);
 		
-	}
-	
-	
-	
-	
-
-	
+	}	
 
 }

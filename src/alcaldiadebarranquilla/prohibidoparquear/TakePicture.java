@@ -10,11 +10,10 @@ import java.util.List;
 import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
 import alcaldiadebarranquilla.prohibidoparquear.controller.Params;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -23,10 +22,6 @@ import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,7 +38,7 @@ import android.widget.RelativeLayout;
  *
  */
 public class TakePicture extends Activity implements
-						SurfaceHolder.Callback, SensorEventListener{
+						SurfaceHolder.Callback{
 	
 	protected static final String TAG = "TakeAPicActivity";
 	private Camera camera;
@@ -58,35 +53,20 @@ public class TakePicture extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		
 		handler.post(loadCamera);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+		
 		Bundle parametros = getIntent().getExtras();
+		
 		setContentView(R.layout.activity_take_picture);
-		if(parametros.getString("primeravez").equalsIgnoreCase("no")){
-			AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
-			ventanaflotante.setVisibility(View.GONE);
+		if(parametros!=null){
+			if(parametros.getString("primeravez").equalsIgnoreCase("no")){
+				AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+				ventanaflotante.setVisibility(View.GONE);
+			}
 		}
-	}
-	
-	
-
-	@Override
-	protected void onResume() {
-	    super.onResume();
-	    SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
-	    List<Sensor> sensors = sm.getSensorList(Sensor.TYPE_ACCELEROMETER);        
-	    if (sensors.size() > 0) {
-	        sm.registerListener(this, sensors.get(0), SensorManager.SENSOR_DELAY_GAME);
-	    }
-	}
-	
-	@Override
-	protected void onStop() {
-	    SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);        
-	    sm.unregisterListener(this);
-	    super.onStop();
-	}
+		
+	}	
 	
 	protected void takeAPicAction() {
 
@@ -125,7 +105,7 @@ public class TakePicture extends Activity implements
 								scaled_bmp.getHeight(), matrix, true);
 
 						// Save the image and call preview
-						Manager.getInstance().addImage(scaled_with_orientation);
+						Manager.getInstance().setImageTemp(scaled_with_orientation);
 						
 						AppGlobal.getInstance().dispatcher.open(
 								TakePicture.this, "preview", true);
@@ -197,35 +177,56 @@ public class TakePicture extends Activity implements
 		}
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		// TODO Auto-generated method stub
-		if (previewing) {
-			if (camera != null)
-				camera.stopPreview();
-		}
-
-		Camera.Parameters p = camera.getParameters();
 		
-		if (camera != null)
-			camera.setParameters(p);
+		try{
+			if (previewing) {
+				if (camera != null)
+					camera.stopPreview();
+			}
 
-		if (camera != null) {
-			// camera.setDisplayOrientation(90);
-			if (Integer.parseInt(Build.VERSION.SDK) >= 8)
-				setDisplayOrientation(camera, 90);
-			else {
-				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-					p.set("orientation", "portrait");
-					p.set("rotation", 90);
-				}
-				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-					p.set("orientation", "landscape");
-					p.set("rotation", 90);
+			Camera.Parameters p = camera.getParameters();
+			
+			if (camera != null)
+				camera.setParameters(p);
+
+			if (camera != null) {
+				// camera.setDisplayOrientation(90);
+				if (Integer.parseInt(Build.VERSION.SDK) >= 8){
+					
+					int orientation = 90;
+					
+					if(getRequestedOrientation() == View.LAYOUT_DIRECTION_LTR){
+						orientation = 0;
+					}
+					
+					setDisplayOrientation(camera, orientation);
+					
+				}else {
+					
+					int rotation = 90;
+					
+					if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+						p.set("orientation", "portrait");
+					}
+					if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+						p.set("orientation", "landscape");
+					}
+					
+					p.set("rotation", rotation);
+					
 				}
 			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
 		}
+		
+		
 
 		try {
 			if (camera != null) {
@@ -297,49 +298,6 @@ public class TakePicture extends Activity implements
 		}
 	}
 
-	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onSensorChanged(SensorEvent event) {
-		// TODO Auto-generated method stub
-		 synchronized (this) {
-	        long current_time = event.timestamp;
-	         
-	        curX = event.values[0];
-	        curY = event.values[1];
-	        curZ = event.values[2];
-	         
-	        if (prevX == 0 && prevY == 0 && prevZ == 0) {
-	            last_update = current_time;
-	            last_movement = current_time;
-	            prevX = curX;
-	            prevY = curY;
-	            prevZ = curZ;
-	        }
-	 
-	        long time_difference = current_time - last_update;
-	        if (time_difference > 0) {
-	            float movement = Math.abs((curX + curY + curZ) - (prevX - prevY - prevZ)) / time_difference;
-	            int limit = 1500;
-	            float min_movement = 1E-6f;
-	            if (movement > min_movement) {
-	                if (current_time - last_movement >= limit) {
-	                	//Log.i(TAG, "X: "+curX+" Y: "+curY+" Z: "+curZ);
-	                }
-	                last_movement = current_time;
-	            }
-	            prevX = curX;
-	            prevY = curY;
-	            prevZ = curZ;
-	            last_update = current_time;
-	        }    
-		 }
-	}
-	
 	public void cerrarVentana(View view){
 		
 		AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
