@@ -48,7 +48,6 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/btn_pic"
-                android:onClick="take"
                 android:scaleType="fitCenter" />
 
             <!-- <ImageButton
@@ -67,16 +66,14 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#80000000" 
-        >
+        android:background="#80000000" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:orientation="vertical"
-           >
+            android:orientation="vertical" >
 
             <ImageButton
                 android:id="@+id/imageButton1"
@@ -107,7 +104,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="42dp"
             android:src="@drawable/flecha" />
-
     </RelativeLayout>
 
 </RelativeLayout>

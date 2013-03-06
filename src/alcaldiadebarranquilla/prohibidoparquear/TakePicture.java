@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 @SuppressLint("HandlerLeak")
@@ -235,6 +236,7 @@ public class TakePicture extends Activity implements
 		// }
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -258,17 +260,14 @@ public class TakePicture extends Activity implements
 		if(uso.equalsIgnoreCase("no")){
 			RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 			ventanaflotante.setVisibility(View.GONE);
+			ActivarBotones();
+		}else{
+			LinearLayout botones  = (LinearLayout) findViewById(R.id.opciones_camara);
+			
 		}
 		
-		btn_take_a_pic = (ImageButton) findViewById(R.id.btn_pic);
-		btn_take_a_pic.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				takeAPicAction();
-			}
-		});
-
+		
+		
 		/*btn_next = (ImageButton) findViewById(R.id.btn_next);
 		btn_next.setOnClickListener(new OnClickListener() {
 
@@ -278,14 +277,7 @@ public class TakePicture extends Activity implements
 			}
 		});*/
 
-		btn_gallery = (ImageButton) findViewById(R.id.btn_back);
-		btn_gallery.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				openUserGallery();
-			}
-		});
+		
 	}
 
 	/*@Override
@@ -550,6 +542,7 @@ public class TakePicture extends Activity implements
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("primeravez", "no");
 		editor.commit();
+		ActivarBotones();
 	}
 	
 	/*public void next(View view){
@@ -586,6 +579,26 @@ public class TakePicture extends Activity implements
 		final AlertDialog alert = builder.create();
 		alert.show();
 		
+	}
+	
+	public void ActivarBotones(){
+		btn_take_a_pic = (ImageButton) findViewById(R.id.btn_pic);
+		btn_take_a_pic.setOnClickListener(new OnClickListener() {
+			
+		@Override
+		public void onClick(View view) {
+					takeAPicAction();
+			}
+		});
+		
+		btn_gallery = (ImageButton) findViewById(R.id.btn_back);
+		btn_gallery.setOnClickListener(new OnClickListener() {
+
+		@Override
+		public void onClick(View view) {
+					openUserGallery();
+			}
+		});
 	}
 	
 	/*public void help(View view){
