@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -244,12 +245,17 @@ public class TakePicture extends Activity implements
 		Bundle parametros = getIntent().getExtras();
 		
 		setContentView(R.layout.activity_take_picture);
-		if(parametros!=null){
-			if(parametros.getString("primeravez").equalsIgnoreCase("no")){
+		/*if(parametros!=null){
+			if(parametros.getString("primeravez").equalsIgnoreCase("si")){
 				RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
-				ventanaflotante.setVisibility(View.GONE);
+				ventanaflotante.setVisibility(View.VISIBLE);
 			}
-		}else{
+		}*/
+		
+		SharedPreferences settings = getSharedPreferences("perfil", MODE_PRIVATE);
+		String uso = settings.getString("primeravez", "si");
+		
+		if(uso.equalsIgnoreCase("no")){
 			RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 			ventanaflotante.setVisibility(View.GONE);
 		}
@@ -538,6 +544,12 @@ public class TakePicture extends Activity implements
 		
 		RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 		ventanaflotante.setVisibility(View.GONE);
+		
+		SharedPreferences settings = getSharedPreferences("perfil", MODE_PRIVATE);
+		String uso = settings.getString("primeravez", "si");
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString("primeravez", "no");
+		editor.commit();
 	}
 	
 	/*public void next(View view){

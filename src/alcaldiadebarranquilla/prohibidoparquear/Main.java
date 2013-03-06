@@ -11,7 +11,7 @@ import android.view.View;
 
 public class Main extends Activity {
 	
-	private String primeravez="no";
+	//private String primeravez="no";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +35,19 @@ public class Main extends Activity {
 			if(uso.equalsIgnoreCase("false")){
 				SharedPreferences.Editor editor = settings.edit();
 				editor.putString("uso","true");
+				editor.putString("primeravez", "si");
 				editor.commit();
-				primeravez="si";
+				//primeravez="si";
 				
-				if(parametros!=null)
-					primeravez= parametros.getString("primeravez");
+				//if(parametros!=null)
+					//primeravez= parametros.getString("primeravez");
 				
 				
 			}else{
 				Intent i = new Intent(this, TakePicture.class);
-				if(parametros!=null)
-					primeravez= parametros.getString("primeravez");
-				i.putExtra("primeravez", primeravez);
+				//if(parametros!=null)
+					//primeravez= parametros.getString("primeravez");
+				//i.putExtra("primeravez", primeravez);
 				startActivity(i);
 				finish();
 			}
@@ -65,11 +66,10 @@ public class Main extends Activity {
 	public void takePicture(View view){
 		Bundle parametros = getIntent().getExtras();
 		Intent i = new Intent(this, TakePicture.class);
-		if(parametros!=null)
-			primeravez= parametros.getString("primeravez");
-		
-		Log.i("primeravez",primeravez+"");
-		i.putExtra("primeravez", primeravez);
+		//if(parametros!=null)
+			//primeravez= parametros.getString("primeravez");
+//		Log.i("primeravez",primeravez+"");
+		//i.putExtra("primeravez", primeravez);
 		startActivity(i);
 		finish();
 	}
