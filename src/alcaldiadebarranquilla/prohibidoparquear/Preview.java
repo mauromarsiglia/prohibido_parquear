@@ -35,7 +35,7 @@ public class Preview extends Activity {
 			public void onClick(View view) {
 				Manager.getInstance().addImage();
 				AppGlobal.getInstance().dispatcher.open(
-						Preview.this, "take", true);
+						Preview.this, "geographic", true);
 			}
 		});
 

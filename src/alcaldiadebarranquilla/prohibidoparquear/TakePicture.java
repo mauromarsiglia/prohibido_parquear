@@ -63,7 +63,7 @@ public class TakePicture extends Activity implements
 	};
 
 	private ImageButton btn_take_a_pic;
-	private ImageButton btn_next;
+	/*private ImageButton btn_next;*/
 	private ImageButton btn_gallery;
 
 	private Handler preparedImage = new Handler() {
@@ -540,7 +540,7 @@ public class TakePicture extends Activity implements
 		ventanaflotante.setVisibility(View.GONE);
 	}
 	
-	public void next(View view){
+	/*public void next(View view){
 		
 		List<Bitmap> images = Manager.getInstance().getImages();
 		
@@ -554,7 +554,7 @@ public class TakePicture extends Activity implements
 			this.displayDialogError();
 		}
 		
-	}
+	}*/
 	
 	public void displayDialogError(){
 		
