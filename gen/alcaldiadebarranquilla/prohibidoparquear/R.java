@@ -75,6 +75,9 @@ public final class R {
         public static final int activity_transparent_capturar_imagen=0x7f060028;
         public static final int app_name=0x7f060000;
         public static final int app_title=0x7f060002;
+        /**  Dialog IMAGE GALLERY 
+         */
+        public static final int continuar_sin_imagen=0x7f06002a;
         public static final int dialog_no_gps_btn_active=0x7f060018;
         public static final int dialog_no_gps_btn_direccion=0x7f06001a;
         public static final int dialog_no_gps_btn_reintentar=0x7f060019;

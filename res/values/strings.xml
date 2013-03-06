@@ -8,7 +8,7 @@
     <!-- Main Layout -->
     <string name="main_layout_title">Consideraciones</string>
     <string name="main_layout_content">        Al tomar la foto verifique que en la imagen aparezca claramente la placa del vehículo y la señal de prohibido parquear, 
-        Además la aplicación requiere de internet para enviar la información.</string>
+        Además la aplicación requiere de internet para enviar la información.	</string>
     <string name="main_layout_btn_ok_text">OK</string>
 
     <!-- Take a Picture Layout -->
@@ -55,6 +55,7 @@
     <string name="dialog_no_image_title">¡Warning IMAGE!</string>
     <string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
     <string name="dialog_no_image_btn_active">OK</string>
+    
     <string name="index_informacionImagen">Prohibido parquear</string>
     <string name="splashscreen_informacion_imagen">Prohibido parquear</string>
     <string name="title_activity_transparent">TransparentActivity</string>
@@ -62,5 +63,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="activity_transparent_capturar_imagen">Presione aqui para tomar la foto</string>
     <string name="transparent_activity_cerrar">Cerrar</string>
+    
+    <!-- Dialog IMAGE GALLERY -->
+    <string name="continuar_sin_imagen">¿Desea continuar sin una fotografía del menor?</string>
 
 </resources>

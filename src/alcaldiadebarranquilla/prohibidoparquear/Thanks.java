@@ -280,7 +280,7 @@ public class Thanks extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									AppGlobal.getInstance().dispatcher.open(
-											Thanks.this, "home", true);
+											Thanks.this, "take", true);
 								}
 
 							}).show();
