@@ -32,10 +32,11 @@ public final class R {
         public static final int btn_done=0x7f020004;
         public static final int btn_next=0x7f020005;
         public static final int btn_pic=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
+        public static final int flecha=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090011;
+        public static final int action_settings=0x7f090013;
         public static final int btn_back=0x7f090003;
         public static final int btn_cancel=0x7f090007;
         public static final int btn_done=0x7f090008;
@@ -43,16 +44,18 @@ public final class R {
         public static final int btn_ok=0x7f090002;
         public static final int btn_pic=0x7f09000b;
         public static final int button1=0x7f090005;
-        public static final int button2=0x7f09000f;
+        public static final int button2=0x7f090011;
         public static final int camera_surface=0x7f09000a;
+        public static final int imageButton1=0x7f09000e;
         public static final int imageView1=0x7f090009;
         public static final int image_preview=0x7f090006;
-        public static final int menu_settings=0x7f090010;
+        public static final int menu_settings=0x7f090012;
         public static final int progressBar1=0x7f090000;
         public static final int textView1=0x7f090004;
         public static final int text_direccion=0x7f090001;
-        public static final int thanks=0x7f09000e;
-        public static final int thannks_container=0x7f09000d;
+        public static final int thanks=0x7f090010;
+        public static final int thannks_container=0x7f09000f;
+        public static final int ventana_flotante=0x7f09000d;
     }
     public static final class layout {
         public static final int acticity_geographic_location=0x7f030000;
@@ -62,7 +65,6 @@ public final class R {
         public static final int activity_splashscreen=0x7f030004;
         public static final int activity_take_picture=0x7f030005;
         public static final int activity_thanks=0x7f030006;
-        public static final int activity_transparent=0x7f030007;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -70,6 +72,7 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060026;
+        public static final int activity_transparent_capturar_imagen=0x7f060028;
         public static final int app_name=0x7f060000;
         public static final int app_title=0x7f060002;
         public static final int dialog_no_gps_btn_active=0x7f060018;
@@ -127,6 +130,7 @@ public final class R {
         public static final int thanks_layout_title_ok_content=0x7f060012;
         public static final int thanks_layout_title_ok_error=0x7f060013;
         public static final int title_activity_transparent=0x7f060025;
+        public static final int transparent_activity_cerrar=0x7f060029;
     }
     public static final class style {
         /** 

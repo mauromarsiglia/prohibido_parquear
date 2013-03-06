@@ -13,6 +13,8 @@ import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -32,6 +34,9 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.AbsoluteLayout;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 /**
  * @author Soldier
@@ -53,11 +58,19 @@ public class TakePicture extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_take_picture);
+		
 		handler.post(loadCamera);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		Bundle parametros = getIntent().getExtras();
+		setContentView(R.layout.activity_take_picture);
+		if(parametros.getString("primeravez").equalsIgnoreCase("no")){
+			AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+			ventanaflotante.setVisibility(View.GONE);
+		}
 	}
 	
+	
+
 	@Override
 	protected void onResume() {
 	    super.onResume();
@@ -128,6 +141,8 @@ public class TakePicture extends Activity implements
 	public void help(View view){
 		Params p = new Params();
 		p.AddParam("take", "1");
+		Bundle parametros = getIntent().getExtras();
+		p.AddParam("primeravez", parametros.getString("primeravez"));
 		AppGlobal.getInstance().dispatcher.open(TakePicture.this, "main", true, p);
 	}
 	
@@ -323,6 +338,12 @@ public class TakePicture extends Activity implements
 	            last_update = current_time;
 	        }    
 		 }
+	}
+	
+	public void cerrarVentana(View view){
+		
+		AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+		ventanaflotante.setVisibility(View.GONE);
 	}
 
 }

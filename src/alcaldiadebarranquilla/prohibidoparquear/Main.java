@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 public class Main extends Activity {
-
+	
+	private String primeravez="no";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,8 +35,17 @@ public class Main extends Activity {
 				SharedPreferences.Editor editor = settings.edit();
 				editor.putString("uso","true");
 				editor.commit();
+				primeravez="si";
+				
+				if(parametros!=null)
+					primeravez= parametros.getString("primeravez");
+				
+				
 			}else{
 				Intent i = new Intent(this, TakePicture.class);
+				if(parametros!=null)
+					primeravez= parametros.getString("primeravez");
+				i.putExtra("primeravez", primeravez);
 				startActivity(i);
 				finish();
 			}
@@ -51,7 +62,15 @@ public class Main extends Activity {
 	}
 	
 	public void takePicture(View view){
-		AppGlobal.getInstance().dispatcher.open(this, "take", true, null);
+		Bundle parametros = getIntent().getExtras();
+		Intent i = new Intent(this, TakePicture.class);
+		if(parametros!=null)
+			primeravez= parametros.getString("primeravez");
+		
+		Log.i("primeravez",primeravez+"");
+		i.putExtra("primeravez", primeravez);
+		startActivity(i);
+		finish();
 	}
 
 }

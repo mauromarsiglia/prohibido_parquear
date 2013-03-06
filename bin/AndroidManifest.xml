@@ -58,6 +58,8 @@
             android:name="alcaldiadebarranquilla.prohibidoparquear.TransparentActivity"
             android:label="@string/title_activity_transparent" >
         </activity>
+        
+  		       
     </application>
 
 </manifest>

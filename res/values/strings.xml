@@ -60,5 +60,7 @@
     <string name="title_activity_transparent">TransparentActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="activity_transparent_capturar_imagen">Presione aqui para tomar la foto</string>
+    <string name="transparent_activity_cerrar">Cerrar</string>
 
 </resources>

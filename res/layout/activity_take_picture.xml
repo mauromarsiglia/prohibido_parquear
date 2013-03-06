@@ -11,16 +11,16 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent" >
 
             <SurfaceView
                 android:id="@+id/camera_surface"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
+                android:layout_height="fill_parent"
+                android:visibility="visible" />
         </RelativeLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50.5dp"
@@ -49,7 +49,7 @@
                 android:background="@drawable/btn_pic"
                 android:onClick="take"
                 android:scaleType="fitCenter" />
-            
+
             <ImageButton
                 android:id="@+id/btn_next"
                 android:layout_width="50dp"
@@ -57,9 +57,63 @@
                 android:background="@drawable/btn_next"
                 android:onClick="next"
                 android:scaleType="fitCenter" />
-
         </LinearLayout>
     </LinearLayout>
-    
+
+    <AbsoluteLayout
+        android:id="@+id/ventana_flotante"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#80000000" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="268dp"
+            android:layout_y="8dp"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="cerrarVentana"
+                android:src="@drawable/btn_cancel" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="134dp"
+            android:layout_y="361dp"
+            android:src="@drawable/flecha" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="44dp"
+            android:layout_y="319dp"
+            android:orientation="vertical"
+            android:padding="2dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_transparent_capturar_imagen"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffffff"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </AbsoluteLayout>
 
 </RelativeLayout>
