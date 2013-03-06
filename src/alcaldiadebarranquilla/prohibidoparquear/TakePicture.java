@@ -248,6 +248,9 @@ public class TakePicture extends Activity implements
 				AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
 				ventanaflotante.setVisibility(View.GONE);
 			}
+		}else{
+			AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+			ventanaflotante.setVisibility(View.GONE);
 		}
 		
 		btn_take_a_pic = (ImageButton) findViewById(R.id.btn_pic);
