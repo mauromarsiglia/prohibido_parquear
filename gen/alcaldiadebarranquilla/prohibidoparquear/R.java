@@ -13,6 +13,17 @@ public final class R {
         public static final int fade_out=0x7f040001;
     }
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarButtonStyle=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010000;
+    }
+    public static final class color {
+        public static final int black_overlay=0x7f050000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -21,8 +32,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int action_help=0x7f020000;
@@ -36,26 +47,27 @@ public final class R {
         public static final int ic_launcher=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
-        public static final int btn_back=0x7f090003;
-        public static final int btn_cancel=0x7f090007;
-        public static final int btn_done=0x7f090008;
-        public static final int btn_next=0x7f09000c;
-        public static final int btn_ok=0x7f090002;
-        public static final int btn_pic=0x7f09000b;
-        public static final int button1=0x7f090005;
-        public static final int button2=0x7f090011;
-        public static final int camera_surface=0x7f09000a;
-        public static final int imageButton1=0x7f09000e;
-        public static final int imageView1=0x7f090009;
-        public static final int image_preview=0x7f090006;
-        public static final int menu_settings=0x7f090012;
-        public static final int progressBar1=0x7f090000;
-        public static final int textView1=0x7f090004;
-        public static final int text_direccion=0x7f090001;
-        public static final int thanks=0x7f090010;
-        public static final int thannks_container=0x7f09000f;
-        public static final int ventana_flotante=0x7f09000d;
+        public static final int action_settings=0x7f0a0014;
+        public static final int btn_back=0x7f0a0003;
+        public static final int btn_cancel=0x7f0a0007;
+        public static final int btn_done=0x7f0a0008;
+        public static final int btn_next=0x7f0a000d;
+        public static final int btn_ok=0x7f0a0002;
+        public static final int btn_pic=0x7f0a000c;
+        public static final int button1=0x7f0a0005;
+        public static final int button2=0x7f0a0012;
+        public static final int camera_surface=0x7f0a000b;
+        public static final int imageButton1=0x7f0a000f;
+        public static final int imageView1=0x7f0a000a;
+        public static final int image_preview=0x7f0a0006;
+        public static final int menu_settings=0x7f0a0013;
+        public static final int progressBar1=0x7f0a0000;
+        public static final int splashscreen=0x7f0a0009;
+        public static final int textView1=0x7f0a0004;
+        public static final int text_direccion=0x7f0a0001;
+        public static final int thanks=0x7f0a0011;
+        public static final int thannks_container=0x7f0a0010;
+        public static final int ventana_flotante=0x7f0a000e;
     }
     public static final class layout {
         public static final int acticity_geographic_location=0x7f030000;
@@ -67,84 +79,90 @@ public final class R {
         public static final int activity_thanks=0x7f030006;
     }
     public static final class menu {
-        public static final int activity_main=0x7f080000;
-        public static final int transparent=0x7f080001;
+        public static final int activity_main=0x7f090000;
+        public static final int transparent=0x7f090001;
     }
     public static final class string {
-        public static final int action_settings=0x7f060026;
-        public static final int activity_transparent_capturar_imagen=0x7f060028;
-        public static final int app_name=0x7f060000;
-        public static final int app_title=0x7f060002;
-        public static final int dialog_no_gps_btn_active=0x7f060018;
-        public static final int dialog_no_gps_btn_direccion=0x7f06001a;
-        public static final int dialog_no_gps_btn_reintentar=0x7f060019;
-        public static final int dialog_no_gps_content=0x7f060017;
+        public static final int action_settings=0x7f070026;
+        public static final int activity_transparent_capturar_imagen=0x7f070028;
+        public static final int app_name=0x7f070000;
+        public static final int app_title=0x7f070002;
+        public static final int dialog_no_gps_btn_active=0x7f070018;
+        public static final int dialog_no_gps_btn_direccion=0x7f07001a;
+        public static final int dialog_no_gps_btn_reintentar=0x7f070019;
+        public static final int dialog_no_gps_content=0x7f070017;
         /**  Dialog GPS 
          */
-        public static final int dialog_no_gps_title=0x7f060016;
-        public static final int dialog_no_image_btn_active=0x7f060022;
-        public static final int dialog_no_image_content=0x7f060021;
+        public static final int dialog_no_gps_title=0x7f070016;
+        public static final int dialog_no_image_btn_active=0x7f070022;
+        public static final int dialog_no_image_content=0x7f070021;
         /**  Dialog NO IMAGE 
          */
-        public static final int dialog_no_image_title=0x7f060020;
-        public static final int dialog_no_internet_btn_cancelar=0x7f06001e;
-        public static final int dialog_no_internet_btn_reintentar=0x7f06001d;
-        public static final int dialog_no_internet_content=0x7f06001c;
-        public static final int dialog_no_internet_error_status_false_send_event=0x7f06001f;
+        public static final int dialog_no_image_title=0x7f070020;
+        public static final int dialog_no_internet_btn_cancelar=0x7f07001e;
+        public static final int dialog_no_internet_btn_reintentar=0x7f07001d;
+        public static final int dialog_no_internet_content=0x7f07001c;
+        public static final int dialog_no_internet_error_status_false_send_event=0x7f07001f;
         /**  Dialog INTERNET 
          */
-        public static final int dialog_no_internet_title=0x7f06001b;
-        public static final int direccion_layout_back_button=0x7f06000d;
-        public static final int direccion_layout_error_input=0x7f06000e;
-        public static final int direccion_layout_ok_button=0x7f06000c;
+        public static final int dialog_no_internet_title=0x7f07001b;
+        public static final int direccion_layout_back_button=0x7f07000d;
+        public static final int direccion_layout_error_input=0x7f07000e;
+        public static final int direccion_layout_ok_button=0x7f07000c;
         /**  Dirección Layout 
          */
-        public static final int direccion_layout_title=0x7f06000b;
+        public static final int direccion_layout_title=0x7f07000b;
+        public static final int dummy_button=0x7f07002b;
+        public static final int dummy_content=0x7f07002c;
         /**  Geographic Location Layout 
          */
-        public static final int graphics_layout_title=0x7f06000a;
-        public static final int hello_world=0x7f060027;
-        public static final int index_informacionImagen=0x7f060023;
-        public static final int main_layout_btn_ok_text=0x7f060005;
-        public static final int main_layout_content=0x7f060004;
+        public static final int graphics_layout_title=0x7f07000a;
+        public static final int hello_world=0x7f070027;
+        public static final int index_informacionImagen=0x7f070023;
+        public static final int main_layout_btn_ok_text=0x7f070005;
+        public static final int main_layout_content=0x7f070004;
         /**  Main Layout 
          */
-        public static final int main_layout_title=0x7f060003;
-        public static final int menu_settings=0x7f060001;
+        public static final int main_layout_title=0x7f070003;
+        public static final int menu_settings=0x7f070001;
         /**  Preview Layout 
          */
-        public static final int preview_layout_title=0x7f060009;
-        public static final int splashscreen_informacion_imagen=0x7f060024;
-        public static final int take_a_picture_layout_btn_help=0x7f060007;
-        public static final int take_a_picture_layout_content_error_picture_type=0x7f060008;
+        public static final int preview_layout_title=0x7f070009;
+        public static final int splashscreen_informacion_imagen=0x7f070024;
+        public static final int take_a_picture_layout_btn_help=0x7f070007;
+        public static final int take_a_picture_layout_content_error_picture_type=0x7f070008;
         /**  Take a Picture Layout 
          */
-        public static final int take_a_picture_layout_title=0x7f060006;
-        public static final int thanks_layout_espere_texto=0x7f060011;
-        public static final int thanks_layout_title_btn_exit=0x7f060015;
-        public static final int thanks_layout_title_btn_nuevo=0x7f060014;
-        public static final int thanks_layout_title_error=0x7f060010;
+        public static final int take_a_picture_layout_title=0x7f070006;
+        public static final int thanks_layout_espere_texto=0x7f070011;
+        public static final int thanks_layout_title_btn_exit=0x7f070015;
+        public static final int thanks_layout_title_btn_nuevo=0x7f070014;
+        public static final int thanks_layout_title_error=0x7f070010;
         /**  Thanks Layout 
          */
-        public static final int thanks_layout_title_ok=0x7f06000f;
-        public static final int thanks_layout_title_ok_content=0x7f060012;
-        public static final int thanks_layout_title_ok_error=0x7f060013;
-        public static final int title_activity_transparent=0x7f060025;
-        public static final int transparent_activity_cerrar=0x7f060029;
+        public static final int thanks_layout_title_ok=0x7f07000f;
+        public static final int thanks_layout_title_ok_content=0x7f070012;
+        public static final int thanks_layout_title_ok_error=0x7f070013;
+        public static final int title_activity_fullscreen=0x7f07002a;
+        public static final int title_activity_transparent=0x7f070025;
+        public static final int transparent_activity_cerrar=0x7f070029;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
+
     
  API 11 theme customizations can go here. 
 
@@ -154,10 +172,56 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
+        public static final int ButtonBar=0x7f080003;
+        public static final int ButtonBarButton=0x7f080004;
+        public static final int FullscreenActionBarStyle=0x7f080005;
+        public static final int FullscreenTheme=0x7f080002;
     }
+    public static final class styleable {
+        /** 
+         Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels.
+    
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle alcaldiadebarranquilla.prohibidoparquear:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle alcaldiadebarranquilla.prohibidoparquear:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link alcaldiadebarranquilla.prohibidoparquear.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link alcaldiadebarranquilla.prohibidoparquear.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+    };
 }

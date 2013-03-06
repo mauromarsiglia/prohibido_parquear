@@ -58,8 +58,12 @@
             android:name="alcaldiadebarranquilla.prohibidoparquear.TransparentActivity"
             android:label="@string/title_activity_transparent" >
         </activity>
-        
-  		       
+        <activity
+            android:name="alcaldiadebarranquilla.prohibidoparquear.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>
