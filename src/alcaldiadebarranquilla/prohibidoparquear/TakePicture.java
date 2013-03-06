@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 @SuppressLint("HandlerLeak")
 public class TakePicture extends Activity implements
@@ -245,11 +246,11 @@ public class TakePicture extends Activity implements
 		setContentView(R.layout.activity_take_picture);
 		if(parametros!=null){
 			if(parametros.getString("primeravez").equalsIgnoreCase("no")){
-				AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+				RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 				ventanaflotante.setVisibility(View.GONE);
 			}
 		}else{
-			AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+			RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 			ventanaflotante.setVisibility(View.GONE);
 		}
 		
@@ -535,7 +536,7 @@ public class TakePicture extends Activity implements
 	
 	public void cerrarVentana(View view){
 		
-		AbsoluteLayout ventanaflotante = (AbsoluteLayout) findViewById(R.id.ventana_flotante);
+		RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 		ventanaflotante.setVisibility(View.GONE);
 	}
 	
