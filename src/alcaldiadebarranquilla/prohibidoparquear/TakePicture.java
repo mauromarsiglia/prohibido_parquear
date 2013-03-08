@@ -6,7 +6,6 @@ package alcaldiadebarranquilla.prohibidoparquear;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
@@ -32,16 +31,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AbsoluteLayout;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 @SuppressLint("HandlerLeak")
 public class TakePicture extends Activity implements
@@ -244,9 +239,8 @@ public class TakePicture extends Activity implements
 		setContentView(R.layout.activity_take_picture);
 		
 		handler.post(loadCamera);
-
 		
-		Bundle parametros = getIntent().getExtras();
+		//Bundle parametros = getIntent().getExtras();
 		Log.i("onCreate", "metodo onCreate");
 		//loadCamera();
 		setContentView(R.layout.activity_take_picture);
@@ -288,23 +282,26 @@ public class TakePicture extends Activity implements
 		
 	}
 	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
+	/*@Override
+	public void onConfigurationChanged(Configuration config) {
 		
-		    super.onConfigurationChanged(newConfig);
-		
-		    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-		
-		        Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-		
-		    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-		
-		        Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-		
-		    }
+		Log.i(TAG, "onConfigurationChanged");
+	    super.onConfigurationChanged(config);
 	
-	}
+	    if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+	        Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+	    } else if (config.orientation == Configuration.ORIENTATION_PORTRAIT){
+	        Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+	    }
+	
+	}*/
 
+	@Override
+    public void onConfigurationChanged(Configuration newConfig) 
+    {
+		Log.i(TAG, "onConfigurationChanged");
+		setContentView(R.layout.activity_take_picture);
+    }
 
 	/*@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -378,8 +375,7 @@ public class TakePicture extends Activity implements
 	}
 
 	protected void takeAPicAction() {
-		// camera.stopPreview();
-		// System.gc();
+
 		ShutterCallback shutterCallBack = new ShutterCallback() {
 			@Override
 			public void onShutter() {
@@ -460,6 +456,7 @@ public class TakePicture extends Activity implements
 			if (downPolymorphic != null)
 				downPolymorphic.invoke(camera, new Object[] { angle });
 		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 	}
 
@@ -475,22 +472,7 @@ public class TakePicture extends Activity implements
 
 			// Set camera parameters
 			Camera.Parameters p = camera.getParameters();
-			// List<String> focusModes = p.getSupportedFocusModes();
-			// if (focusModes
-			// .contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-			// p.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-			// }
-			// List<String> flashModes = p.getSupportedFlashModes();
-			// if (flashModes.contains(Camera.Parameters.FLASH_MODE_AUTO)) {
-			// p.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
-			// }
-			// List<String> sceneModes = p.getSupportedSceneModes();
-			// if (sceneModes.contains(Camera.Parameters.SCENE_MODE_ACTION)) {
-			// p.setSceneMode(Camera.Parameters.SCENE_MODE_ACTION);
-			// }
-			// p.setPictureFormat(PixelFormat.JPEG);
-			// p.setPreviewSize(width, height);
-			// p.setPictureSize(width, height);
+			
 			if (camera != null)
 				camera.setParameters(p);
 
@@ -498,6 +480,7 @@ public class TakePicture extends Activity implements
 			if (camera != null) {
 				// camera.setDisplayOrientation(90);
 				if (Integer.parseInt(Build.VERSION.SDK) >= 8)
+					
 					setDisplayOrientation(camera, 90);
 				else {
 					if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -511,12 +494,11 @@ public class TakePicture extends Activity implements
 					}
 				}
 			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		
-
 		try {
 			if (camera != null) {
 				camera.setPreviewDisplay(holder);
@@ -536,8 +518,6 @@ public class TakePicture extends Activity implements
 		try {
 			camera = Camera.open();
 			camera.setPreviewDisplay(holder);
-			
-			
 		} catch (IOException e) {
 			if (camera != null)
 				camera.release();
@@ -644,5 +624,11 @@ public class TakePicture extends Activity implements
 		AppGlobal.getInstance().dispatcher.open(TakePicture.this, "main", true, p);
 		
 	}*/
+	
+	
+	protected void onStop() {
+		
+	} 
+	
 	
 }
