@@ -3,7 +3,7 @@ package alcaldiadebarranquilla.prohibidoparquear.util;
 public class AppConfig {
 
 	// WS paths
-	private static final String EVENTS_ADD = "events/add";
+	private static final String EVENTS_ADD = "events/";
 	private static final String EVENTS_CATEGORIES = "events/categories";
 
 	// Developer URLs
