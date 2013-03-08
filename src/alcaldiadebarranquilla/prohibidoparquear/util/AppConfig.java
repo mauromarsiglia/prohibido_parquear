@@ -7,9 +7,9 @@ public class AppConfig {
 	private static final String EVENTS_CATEGORIES = "events/categories";
 
 	// Developer URLs
-	private static final String DEV_PUSHERS_API_URL = "http://192.168.1.10:3000/api/pushers/";
-	private static final String DEV_PUSHER_KEY = "6a05a02812809342b98a121b3723244ab00251cd";
-	private static final String DEV_PUSHER_APP_KEY = "f01d348b360b7eca51e6470d39cdd668c7b09948";
+	private static final String DEV_PUSHERS_API_URL = "http://192.168.1.15:3000/api/pushers/";
+	private static final String DEV_PUSHER_KEY = "ae02fa82a0566c9270159ade86003f60d30de97e";
+	private static final String DEV_PUSHER_APP_KEY = "ac7db10cc30c7a2829f2c68e61edc8fe419fc9fe";
 
 	// Production URLs
 	private static final String PRO_PUSHERS_API_URL = "http://geoevents.herokuapp.com/api/pushers/";
