@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/text_direccion"
+        android:onClick="btn_ok"
         android:text="@string/direccion_layout_ok_button" />
 
     <Button
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_ok"
         android:layout_centerHorizontal="true"
+        android:onClick="btn_back"
         android:text="@string/direccion_layout_back_button" />
 
 </RelativeLayout>
