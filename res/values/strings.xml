@@ -40,9 +40,9 @@
     <!-- Dialog GPS -->
     <string name="dialog_no_gps_title">¡Warning GPS!</string>
     <string name="dialog_no_gps_content">No fué posible establecer la ubicación del lugar, la ubicación es detectada a través de la Red Celular y Wifi.\n¿Desea verificar la configuración de ubicación por Red?.</string>
-    <string name="dialog_no_gps_btn_active">Active</string>
+    <string name="dialog_no_gps_btn_active">Activar GPS</string>
     <string name="dialog_no_gps_btn_reintentar">Reintentar</string>
-    <string name="dialog_no_gps_btn_direccion">Dirección</string>
+    <string name="dialog_no_gps_btn_direccion">Ingresar Dirección</string>
 
     <!-- Dialog INTERNET -->
     <string name="dialog_no_internet_title">¡Error de red!</string>
