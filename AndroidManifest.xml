@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="alcaldiadebarranquilla.prohibidoparquear"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -40,7 +40,9 @@
         </activity>
         <activity
             android:name="alcaldiadebarranquilla.prohibidoparquear.TakePicture"
-            android:label="@string/take_a_picture_layout_title" >
+            android:label="@string/take_a_picture_layout_title" 
+            android:configChanges="orientation|keyboardHidden">
+            
         </activity>
         <activity
             android:name="alcaldiadebarranquilla.prohibidoparquear.Thanks"

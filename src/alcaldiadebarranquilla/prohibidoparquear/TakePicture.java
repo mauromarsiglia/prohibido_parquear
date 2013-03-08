@@ -41,6 +41,7 @@ import android.widget.AbsoluteLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 @SuppressLint("HandlerLeak")
 public class TakePicture extends Activity implements
@@ -241,12 +242,16 @@ public class TakePicture extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_take_picture);
+		
 		handler.post(loadCamera);
 
 		
 		Bundle parametros = getIntent().getExtras();
-		
+		Log.i("onCreate", "metodo onCreate");
+		//loadCamera();
 		setContentView(R.layout.activity_take_picture);
+		
+		//Log.i("camera_view",camera_view+"");
 		/*if(parametros!=null){
 			if(parametros.getString("primeravez").equalsIgnoreCase("si")){
 				RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
@@ -261,9 +266,6 @@ public class TakePicture extends Activity implements
 			RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 			ventanaflotante.setVisibility(View.GONE);
 			ActivarBotones();
-		}else{
-			LinearLayout botones  = (LinearLayout) findViewById(R.id.opciones_camara);
-			
 		}
 		
 		
@@ -277,6 +279,12 @@ public class TakePicture extends Activity implements
 			}
 		});*/
 
+		
+	}
+	
+	@Override
+	protected void onSaveInstanceState (Bundle outState){
+		Log.i("test", "test");
 		
 	}
 
@@ -416,11 +424,13 @@ public class TakePicture extends Activity implements
 	@SuppressWarnings("deprecation")
 	private void loadCamera() {
 		try {
+			Log.i("cargo camara:","ok");
 			camera_view = (SurfaceView) findViewById(R.id.camera_surface);
 			surfaceHolder = camera_view.getHolder();
 			surfaceHolder.addCallback(this);
 			surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 		} catch (Exception e) {
+			Log.i("cargo camara:","false");
 		}
 	}
 
@@ -479,6 +489,7 @@ public class TakePicture extends Activity implements
 					if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 						p.set("orientation", "landscape");
 						p.set("rotation", 90);
+						
 					}
 				}
 			}
@@ -507,6 +518,8 @@ public class TakePicture extends Activity implements
 		try {
 			camera = Camera.open();
 			camera.setPreviewDisplay(holder);
+			
+			
 		} catch (IOException e) {
 			if (camera != null)
 				camera.release();
@@ -519,12 +532,15 @@ public class TakePicture extends Activity implements
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		if (camera != null) {
 			try{
+				
 				camera.setPreviewCallback(null);
 				camera.stopPreview();
 				camera.setPreviewCallback(null);
 				previewing = false;
 				camera.release();
+				
 				camera = null;
+				
 			}catch(Exception e){
 				e.printStackTrace();
 			}
