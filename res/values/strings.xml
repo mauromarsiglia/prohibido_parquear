@@ -24,7 +24,7 @@
 
     <!-- Dirección Layout -->
     <string name="direccion_layout_title">Ingrese dirección</string>
-    <string name="direccion_layout_ok_button">Enviar</string>
+    <string name="direccion_layout_ok_button">Continuar</string>
     <string name="direccion_layout_back_button">Atras</string>
     <string name="direccion_layout_error_input">Debe ingresar la dirección</string>
 

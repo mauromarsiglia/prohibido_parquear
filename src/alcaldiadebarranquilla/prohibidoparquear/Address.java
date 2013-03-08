@@ -22,14 +22,14 @@ public class Address extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_address);
-		this.direccion = (EditText) findViewById(R.id.text_direccion);		
+		this.direccion = (EditText) findViewById(R.id.editText1);		
 	}
 	
 	public void btn_ok(View view){
 		
 		String dir = this.direccion.getText().toString();
 		
-		if(dir.length()>0){
+		if(dir.length()>4){
 			AppGlobal.getInstance().dispatcher.open(
 					Address.this, "thanks", true);
 		}else{
@@ -40,9 +40,4 @@ public class Address extends Activity {
 		
 	}
 	
-	public void btn_back(View view){
-		AppGlobal.getInstance().dispatcher.open(
-				Address.this, "geographic", true);
-	}
-
 }

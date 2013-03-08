@@ -3,34 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/text_direccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+   <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/layout_footer_des"
         android:layout_alignParentTop="true"
-        android:ems="10"
-        android:inputType="textPostalAddress" >
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/btn_ok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/text_direccion"
-        android:onClick="btn_ok"
-        android:text="@string/direccion_layout_ok_button" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_ok"
         android:layout_centerHorizontal="true"
-        android:onClick="btn_back"
-        android:text="@string/direccion_layout_back_button" />
+        android:layout_centerVertical="false"
+        android:layout_marginTop="1dp"
+        android:orientation="vertical" >
 
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/transparent"
+            android:gravity="top|center_horizontal"
+            android:inputType="textMultiLine"
+            android:padding="15dp"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:singleLine="false" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layout_footer_des"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#B2000000"
+        android:gravity="right"
+        android:orientation="vertical"
+        android:padding="8dp" >
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="10dp"
+            android:text="@string/direccion_layout_ok_button"
+            android:onClick="btn_ok"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+    
 </RelativeLayout>
