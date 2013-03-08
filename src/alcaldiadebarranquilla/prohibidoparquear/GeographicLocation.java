@@ -52,8 +52,8 @@ public class GeographicLocation extends Activity implements LocationListener{
 	private void buildAlertMessageNoGps() {
 		
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(R.string.dialog_no_gps_title)
-				.setTitle(R.string.dialog_no_gps_content)
+		builder.setMessage(R.string.dialog_no_gps_content)
+				.setTitle(R.string.dialog_no_gps_title)
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setCancelable(false)
 				.setPositiveButton(R.string.dialog_no_gps_btn_active,
