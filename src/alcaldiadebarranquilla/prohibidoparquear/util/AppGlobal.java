@@ -4,7 +4,8 @@ import alcaldiadebarranquilla.prohibidoparquear.Address;
 import alcaldiadebarranquilla.prohibidoparquear.GeographicLocation;
 import alcaldiadebarranquilla.prohibidoparquear.Main;
 import alcaldiadebarranquilla.prohibidoparquear.Preview;
-import alcaldiadebarranquilla.prohibidoparquear.TakePicture;
+import alcaldiadebarranquilla.prohibidoparquear.TakeAPicture;
+//import alcaldiadebarranquilla.prohibidoparquear.TakePicture;
 import alcaldiadebarranquilla.prohibidoparquear.Thanks;
 import alcaldiadebarranquilla.prohibidoparquear.controller.ActivityDispatcher;
 
@@ -30,7 +31,7 @@ public class AppGlobal {
 
 		dispatcher = new ActivityDispatcher();
 		dispatcher.addHandler("main", Main.class);
-		dispatcher.addHandler("take", TakePicture.class);
+		dispatcher.addHandler("take", TakeAPicture.class);
 		dispatcher.addHandler("preview", Preview.class);
 		dispatcher.addHandler("geographic", GeographicLocation.class);
 		dispatcher.addHandler("thanks", Thanks.class);

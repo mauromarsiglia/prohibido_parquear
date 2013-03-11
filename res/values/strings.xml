@@ -56,6 +56,12 @@
     <string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
     <string name="dialog_no_image_btn_active">OK</string>
     
+    <!-- Dialog EXIT -->
+    <string name="dialog_exit_title">¡Atención!</string>
+    <string name="dialog_exit_content">¿Seguro que desea salir de la aplicación?</string>
+    <string name="dialog_exit_btn_aceptar">Salir</string>
+    <string name="dialog_exit_btn_cancelar">Atras</string>
+    
     <string name="index_informacionImagen">Prohibido parquear</string>
     <string name="splashscreen_informacion_imagen">Prohibido parquear</string>
     <string name="title_activity_transparent">TransparentActivity</string>
