@@ -52,7 +52,7 @@
     <string name="dialog_no_internet_error_status_false_send_event">Ocurrio un error a intentar enviar el reporte al servidor\nPor favor intente más tarde.</string>
 
     <!-- Dialog NO IMAGE -->
-    <string name="dialog_no_image_title">¡Warning IMAGE!</string>
+    <string name="dialog_no_image_title">¡Atención!</string>
     <string name="dialog_no_image_content">Para proceder debe tomar por lo menos una foto al infractor.</string>
     <string name="dialog_no_image_btn_active">OK</string>
     
@@ -63,8 +63,8 @@
     <string name="dialog_exit_btn_cancelar">Atras</string>
     
     <!-- Dialog BACK ADDRESS -->
-    <string name="dialog_back_address_title">Title</string>
-    <string name="dialog_back_address_content">Contenido</string>
+    <string name="dialog_back_address_title">¡Atención!</string>
+    <string name="dialog_back_address_content">¿Desea dejar de ingresar la dirección?</string>
     <string name="dialog_back_address_btn_aceptar">Detectar por GPS</string>
     <string name="dialog_back_address_btn_cancelar">Cancelar</string>
     

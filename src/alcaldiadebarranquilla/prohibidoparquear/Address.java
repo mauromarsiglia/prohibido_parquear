@@ -63,8 +63,10 @@ public class Address extends Activity {
 							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
+								dialog.dismiss();
 								AppGlobal.getInstance().dispatcher.open(
 										Address.this, "geographic", true);
+								
 							}
 						})
 				.setNegativeButton(R.string.dialog_back_address_btn_cancelar,
