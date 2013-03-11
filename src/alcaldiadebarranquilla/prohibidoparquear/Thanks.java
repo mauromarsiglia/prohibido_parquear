@@ -22,6 +22,8 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppConfig;
@@ -50,27 +52,38 @@ import android.widget.TextView;
 public class Thanks extends Activity {
 	
 	private final String TAG = "THANKS";
-	private TextView mensaje;
 	private LinearLayout thanks_container;
+	private LinearLayout thanks_container_error;
 	private RelativeLayout wait_container;
+	private TextView mensaje;
 	private static final int GLOBAL_ERROR = 1;
 	private static final int COMPLETE_UPLOAD = 2;
 	private static final int IMAGE_ERROR = 3;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);		
+		
+		//requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);		
 		setContentView(R.layout.activity_thanks);
 		AppConfig.setDeveloperEnviroment();
 		
+		this.mensaje = (TextView) findViewById(R.id.error);
+		this.thanks_container_error = (LinearLayout)findViewById(R.id.thannks_container_error);
+		this.thanks_container_error.setVisibility(View.GONE);
+		
 		this.thanks_container = (LinearLayout)findViewById(R.id.thannks_container);
 		this.thanks_container.setVisibility(View.GONE);
+
 		this.sendData();
 		
-		mensaje = (TextView) findViewById(R.id.thanks);
-		mensaje.setText(R.string.thanks_layout_title_ok_content);
-		
+	}
+	
+	public void reintentar(View view){
+		this.thanks_container_error.setVisibility(View.GONE);
+		this.wait_container.setVisibility(View.VISIBLE);
+		sendData();
 	}
 	
 	private void sendData() {
@@ -94,91 +107,6 @@ public class Thanks extends Activity {
 		
 	}
 	
-	/*public boolean sendEvent(String application_token, String key, String longitude, String latitude,
-			String device_model, String category_id, String address_description, String data, String description){
-		
-		setProgressBarIndeterminateVisibility(true);
-		
-		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
-		postparameters2send.add(new BasicNameValuePair("application_token", application_token));
-		postparameters2send.add(new BasicNameValuePair("key", key));
-		postparameters2send.add(new BasicNameValuePair("event[longitude]", longitude));
-		postparameters2send.add(new BasicNameValuePair("event[latitude]", latitude));
-		postparameters2send.add(new BasicNameValuePair("event[device_model]", device_model));
-		postparameters2send.add(new BasicNameValuePair("event[category_id]", category_id));
-		postparameters2send.add(new BasicNameValuePair("event[address_description]", address_description));
-		postparameters2send.add(new BasicNameValuePair("event[data]", data));
-		postparameters2send.add(new BasicNameValuePair("event[description]", description));
-		//event[photos_attributes][][image]
-		//		
-		//postparameters2send.add(new BasicNameValuePair("event[description]", description));
-		
-		
-		DoRest rest_get_categories = new DoRest(AppConfig.ADD_EVENT_URL,
-				Verbs.POST, postparameters2send, Manager.getInstance().getImages());
-		
-		rest_get_categories.setListener(new DoRestEventListener() {
-
-			public void onError() {
-				//Colocar Alert
-				setProgressBarIndeterminateVisibility(false);
-				crearDialogoAlerta().show();
-			}
-
-			public void onComplete(int status, String data) {
-				setProgressBarIndeterminateVisibility(false);
-				if (status == 200) {
-					JSONObject json_data;
-					try {
-						json_data = new JSONObject(data);
-						Log.i(TAG, json_data.toString());
-						
-						boolean status_response = json_data.getBoolean("status");
-						
-						Manager.getInstance().setResponseEvent(status_response);
-						if(!status_response){
-							mensaje.setText(R.string.thanks_layout_title_ok_error);
-						}
-						
-						thanks_container.setVisibility(View.VISIBLE);
-						
-					} catch (JSONException e) {
-						Log.e(TAG, e.getMessage());
-					}
-				}//82 
-			}
-		});
-		rest_get_categories.call();
-		return true;
-      	
-	}*/
-	
-	/*private Dialog crearDialogoAlerta(){
-		
-    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    	
-    	builder.setTitle(R.string.dialog_no_internet_title);
-    	builder.setMessage(R.string.dialog_no_internet_content);
-    	builder.setPositiveButton(R.string.dialog_no_internet_btn_reintentar, new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				sendData();
-			}
-		});
-    	builder.setNegativeButton(R.string.dialog_no_internet_btn_cancelar, new OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				dialog.cancel();
-				AppGlobal.getInstance().dispatcher.open(
-						Thanks.this, "take", true);
-			}
-		});
-    	
-    	return builder.create();
-    	
-    }*/
-	
 	public HttpResponse postIncident(String url, MultipartEntity entity) {
 		
 		HttpResponse response = null;
@@ -190,14 +118,41 @@ public class Thanks extends Activity {
 		
 		try {
 			// Add your data
+			httppost.setHeader("Accept", "application/json");
 			httppost.setEntity(entity); // new UrlEncodedFormEntity(params,
 										// HTTP.UTF_8));
 			//httppost.setHeader("Content-Type", "multipart/form-data");
 			// Execute HTTP Post Request
 			response = httpclient.execute(httppost);
 			
+			
 			if (response != null) {
 				HttpEntity data = response.getEntity();
+				
+				int status = response.getStatusLine().getStatusCode();
+				
+				if(status==200){
+					try {
+						JSONObject json_data = new JSONObject(EntityUtils.toString(data));
+						String status_response = json_data.getString("status");
+						
+						if(status_response.equals("true")){
+							//mensaje.setText(getString(R.string.thanks_layout_title_ok));
+							this.thanks_container.setVisibility(View.VISIBLE);
+							
+						}else{
+							//mensaje.setText(getString(R.string.thanks_layout_title_error));
+							this.mensaje.setText(getString(R.string.thanks_layout_title_ok_error));
+							this.thanks_container_error.setVisibility(View.VISIBLE);
+						}
+						
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+				//Borrar
 				Log.i(TAG, response.getStatusLine().getStatusCode()+"");
 				String responseString = EntityUtils.toString(data);
 				Log.i(TAG, responseString);
@@ -227,39 +182,12 @@ public class Thanks extends Activity {
 		switch (msg.what) {
 		case IMAGE_ERROR:
 			
-			mensaje.setText(R.string.thanks_layout_title_ok_error);
+			mensaje.setText(R.string.thanks_layout_title_error_image);
+			this.thanks_container_error.setVisibility(View.VISIBLE);
 			
-			// final AlertDialog.Builder builder = new
-			// AlertDialog.Builder(this);
-			// builder.setMessage(R.string.no_fue_posible)
-			// .setTitle(R.string.error_texto)
-			// .setIcon(android.R.drawable.ic_dialog_alert)
-			// .setCancelable(false)
-			// .setPositiveButton(R.string.de_acuerdo,
-			// new DialogInterface.OnClickListener() {
-			// public void onClick(
-			// final DialogInterface dialog,
-			// final int id) {
-			// dialog.cancel();
-			// AppGlobal.getInstance().image = null;
-			// sendData();
-			// }
-			// })
-			// .setNegativeButton("Intentar de nuevo",
-			// new DialogInterface.OnClickListener() {
-			// public void onClick(
-			// final DialogInterface dialog,
-			// final int id) {
-			// dialog.cancel();
-			// sendData();
-			// }
-			// });
-			// final AlertDialog alert = builder.create();
-			// alert.show();
-			// break;
 		case GLOBAL_ERROR:
 			
-			mensaje.setText(R.string.thanks_layout_title_ok_error);
+
 			
 			new AlertDialog.Builder(this)
 					.setIcon(android.R.drawable.ic_dialog_alert)
@@ -288,10 +216,13 @@ public class Thanks extends Activity {
 							}).show();
 			break;
 		case COMPLETE_UPLOAD:
-			mensaje.setText(R.string.thanks_layout_title_ok_content);
+			
+			//mensaje.setText(R.string.thanks_layout_title_ok_content);
 			thanks_container.setVisibility(View.VISIBLE);
+			
 			this.wait_container = (RelativeLayout)findViewById(R.id.wait_container);
 			this.wait_container.setVisibility(View.GONE);
+			
 			break;
 		}
 	}
@@ -342,7 +273,7 @@ public class Thanks extends Activity {
 						
 						if (imagePath != null) {
 							FileBody body = new FileBody(
-									new File(imagePath));
+									new File(imagePath), "image/jpeg");
 							String tencodign = body.getTransferEncoding();
 							Log.i(TAG, tencodign);
 							entity.addPart("event[photos_attributes][][image]", body);

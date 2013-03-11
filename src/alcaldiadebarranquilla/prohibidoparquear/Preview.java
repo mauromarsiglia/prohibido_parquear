@@ -43,7 +43,8 @@ public class Preview extends Activity {
 		btn_cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				AppGlobal.getInstance().dispatcher.open(Preview.this, "take", true);
+				AppGlobal.getInstance().dispatcher.open(
+						Preview.this, "take", true);
 			}
 		});
 

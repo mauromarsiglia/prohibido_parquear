@@ -34,6 +34,37 @@
             android:onClick="exit"
             android:text="@string/thanks_layout_title_btn_exit" />
     </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/thannks_container_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/thanks_layout_title_ok_error"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/btn_reintentar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="reintentar"
+            android:text="@string/thanks_layout_title_btn_reintentar" />
+
+        <Button
+            android:id="@+id/btn_salir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="exit"
+            android:text="@string/thanks_layout_title_btn_exit" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/wait_container"

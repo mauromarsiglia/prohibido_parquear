@@ -42,6 +42,14 @@ public class Manager {
 		this.selectedCategory = 2;
 		this.previewing = false;
 	}
+	
+	public void reset(){
+		this.longitude = "0";
+		this.latitude = "0";
+		this.clearImages();
+		this.previewing = false;
+		this.selectedCategory = 2;
+	}
 
 	public List<Bitmap> getImages() {
 		return images;
