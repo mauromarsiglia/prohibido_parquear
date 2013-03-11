@@ -59,8 +59,8 @@
     <!-- Dialog EXIT -->
     <string name="dialog_exit_title">¡Atención!</string>
     <string name="dialog_exit_content">¿Seguro que desea salir de la aplicación?</string>
-    <string name="dialog_exit_btn_aceptar">Salir</string>
-    <string name="dialog_exit_btn_cancelar">Atras</string>
+    <string name="dialog_exit_btn_aceptar">Si</string>
+    <string name="dialog_exit_btn_cancelar">No</string>
     
     <!-- Dialog BACK ADDRESS -->
     <string name="dialog_back_address_title">¡Atención!</string>
