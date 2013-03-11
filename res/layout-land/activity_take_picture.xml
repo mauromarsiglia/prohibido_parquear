@@ -13,7 +13,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <SurfaceView
+            <FrameLayout
                 android:id="@+id/camera_surface"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

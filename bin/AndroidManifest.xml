@@ -39,7 +39,7 @@
             android:label="@string/preview_layout_title" >
         </activity>
         <activity
-            android:name="alcaldiadebarranquilla.prohibidoparquear.TakePicture"
+            android:name="alcaldiadebarranquilla.prohibidoparquear.TakeAPicture"
             android:label="@string/take_a_picture_layout_title" 
             android:configChanges="orientation|keyboardHidden">
             

@@ -11,31 +11,43 @@
         android:orientation="vertical"
         android:padding="10dp"
         android:visibility="visible" >
-        
+
         <TextView
-	        android:id="@+id/thanks"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center"
-	        android:text="@string/thanks_layout_title_ok_content"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/thanks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/thanks_layout_title_ok_content"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    	<Button
-	        android:id="@+id/button1"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:onClick="nuevoReporte"
-	        android:text="@string/thanks_layout_title_btn_nuevo" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="nuevoReporte"
+            android:text="@string/thanks_layout_title_btn_nuevo" />
 
-    	<Button
-	        android:id="@+id/button2"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:onClick="exit"
-	        android:text="@string/thanks_layout_title_btn_exit" />
-        
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="exit"
+            android:text="@string/thanks_layout_title_btn_exit" />
     </LinearLayout>
-    
-    
+
+    <RelativeLayout
+        android:id="@+id/wait_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thannks_container"
+        android:layout_centerHorizontal="true" >
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp" />
+    </RelativeLayout>
 
 </RelativeLayout>

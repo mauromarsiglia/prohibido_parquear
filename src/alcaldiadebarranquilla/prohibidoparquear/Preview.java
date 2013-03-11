@@ -41,7 +41,6 @@ public class Preview extends Activity {
 
 		btn_cancel = (ImageButton) findViewById(R.id.btn_cancel);
 		btn_cancel.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				AppGlobal.getInstance().dispatcher.open(Preview.this, "take", true);

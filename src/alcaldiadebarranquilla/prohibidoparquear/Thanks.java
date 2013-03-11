@@ -40,6 +40,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -51,6 +52,7 @@ public class Thanks extends Activity {
 	private final String TAG = "THANKS";
 	private TextView mensaje;
 	private LinearLayout thanks_container;
+	private RelativeLayout wait_container;
 	private static final int GLOBAL_ERROR = 1;
 	private static final int COMPLETE_UPLOAD = 2;
 	private static final int IMAGE_ERROR = 3;
@@ -60,7 +62,7 @@ public class Thanks extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);		
 		setContentView(R.layout.activity_thanks);
-		AppConfig.setProductionEnviroment();
+		AppConfig.setDeveloperEnviroment();
 		
 		this.thanks_container = (LinearLayout)findViewById(R.id.thannks_container);
 		this.thanks_container.setVisibility(View.GONE);
@@ -288,6 +290,8 @@ public class Thanks extends Activity {
 		case COMPLETE_UPLOAD:
 			mensaje.setText(R.string.thanks_layout_title_ok_content);
 			thanks_container.setVisibility(View.VISIBLE);
+			this.wait_container = (RelativeLayout)findViewById(R.id.wait_container);
+			this.wait_container.setVisibility(View.GONE);
 			break;
 		}
 	}

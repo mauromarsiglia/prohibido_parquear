@@ -6,6 +6,8 @@ package alcaldiadebarranquilla.prohibidoparquear.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
 /**
@@ -24,6 +26,9 @@ public class Manager {
 	private static Manager instance;
 	private String address;
 	private boolean responseEvent;
+	private boolean previewing;
+	private boolean primeraVezMensaje;
+	private boolean primeraVezAyuda;
 	
 	public static Manager getInstance(){
 		if(instance==null){
@@ -35,6 +40,7 @@ public class Manager {
 	private Manager(){
 		this.images = new LinkedList<Bitmap>();
 		this.selectedCategory = 2;
+		this.previewing = false;
 	}
 
 	public List<Bitmap> getImages() {
@@ -109,4 +115,59 @@ public class Manager {
 		this.imageTemp = imageTemp;
 	}
 
+	/**
+	 * @return the previewing
+	 */
+	public boolean isPreviewing() {
+		return previewing;
+	}
+
+	/**
+	 * @param previewing the previewing to set
+	 */
+	public void setPreviewing(boolean previewing) {
+		this.previewing = previewing;
+	}
+	
+	
+	public boolean isPrimeraVezMensaje(Context context) {
+		SharedPreferences settings = context.getSharedPreferences("perfil", context.MODE_PRIVATE);
+		String uso = settings.getString("uso", "false");
+		
+		if(uso.equalsIgnoreCase("false")){
+			primeraVezMensaje=true;
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putString("uso","true");
+			editor.commit();
+		}else{
+			primeraVezMensaje=false;
+		}
+		
+		
+		return primeraVezMensaje;
+	}
+
+	public void setPrimeraVezMensaje(boolean primeraVezMensaje) {
+		this.primeraVezMensaje = primeraVezMensaje;
+	}
+
+	public boolean isPrimeraVezAyuda(Context context) {
+
+		SharedPreferences settings = context.getSharedPreferences("perfil", context.MODE_PRIVATE);
+		String uso = settings.getString("primeravez", "si");
+		
+		if(uso.equalsIgnoreCase("si")){
+			primeraVezAyuda=true;
+		}else{
+			primeraVezAyuda=false;
+		}
+		return primeraVezAyuda;
+	}
+
+	public void setPrimeraVezAyuda(boolean primeraVezAyuda) {
+		this.primeraVezAyuda = primeraVezAyuda;
+	}
+	
+	
+	
 }

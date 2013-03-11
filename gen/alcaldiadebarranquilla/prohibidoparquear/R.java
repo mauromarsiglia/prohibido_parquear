@@ -36,26 +36,29 @@ public final class R {
         public static final int ic_launcher=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
-        public static final int btn_back=0x7f090003;
-        public static final int btn_cancel=0x7f090007;
-        public static final int btn_done=0x7f090008;
-        public static final int btn_ok=0x7f090002;
-        public static final int btn_pic=0x7f09000c;
-        public static final int button1=0x7f090005;
-        public static final int button2=0x7f090011;
-        public static final int camera_surface=0x7f09000a;
-        public static final int flecha_hacia_abajo=0x7f090009;
-        public static final int imageButton1=0x7f09000e;
-        public static final int image_preview=0x7f090006;
-        public static final int menu_settings=0x7f090012;
-        public static final int opciones_camara=0x7f09000b;
+        public static final int action_settings=0x7f090016;
+        public static final int btn_back=0x7f09000d;
+        public static final int btn_cancel=0x7f090008;
+        public static final int btn_done=0x7f090009;
+        public static final int btn_ok=0x7f090004;
+        public static final int btn_pic=0x7f09000e;
+        public static final int button1=0x7f090006;
+        public static final int button2=0x7f090013;
+        public static final int camera_surface=0x7f09000b;
+        public static final int editText1=0x7f090003;
+        public static final int flecha_hacia_abajo=0x7f09000a;
+        public static final int imageButton1=0x7f090010;
+        public static final int image_preview=0x7f090007;
+        public static final int layout_content=0x7f090001;
+        public static final int layout_footer_des=0x7f090002;
+        public static final int menu_settings=0x7f090015;
+        public static final int opciones_camara=0x7f09000c;
         public static final int progressBar1=0x7f090000;
-        public static final int textView1=0x7f090004;
-        public static final int text_direccion=0x7f090001;
-        public static final int thanks=0x7f090010;
-        public static final int thannks_container=0x7f09000f;
-        public static final int ventana_flotante=0x7f09000d;
+        public static final int textView1=0x7f090005;
+        public static final int thanks=0x7f090012;
+        public static final int thannks_container=0x7f090011;
+        public static final int ventana_flotante=0x7f09000f;
+        public static final int wait_container=0x7f090014;
     }
     public static final class layout {
         public static final int acticity_geographic_location=0x7f030000;
@@ -71,13 +74,19 @@ public final class R {
         public static final int transparent=0x7f080001;
     }
     public static final class string {
-        public static final int action_settings=0x7f060026;
-        public static final int activity_transparent_capturar_imagen=0x7f060028;
+        public static final int action_settings=0x7f06002a;
+        public static final int activity_transparent_capturar_imagen=0x7f06002c;
         public static final int app_name=0x7f060000;
         public static final int app_title=0x7f060002;
         /**  Dialog IMAGE GALLERY 
          */
-        public static final int continuar_sin_imagen=0x7f06002a;
+        public static final int continuar_sin_imagen=0x7f06002e;
+        public static final int dialog_exit_btn_aceptar=0x7f060025;
+        public static final int dialog_exit_btn_cancelar=0x7f060026;
+        public static final int dialog_exit_content=0x7f060024;
+        /**  Dialog EXIT 
+         */
+        public static final int dialog_exit_title=0x7f060023;
         public static final int dialog_no_gps_btn_active=0x7f060018;
         public static final int dialog_no_gps_btn_direccion=0x7f06001a;
         public static final int dialog_no_gps_btn_reintentar=0x7f060019;
@@ -106,8 +115,8 @@ public final class R {
         /**  Geographic Location Layout 
          */
         public static final int graphics_layout_title=0x7f06000a;
-        public static final int hello_world=0x7f060027;
-        public static final int index_informacionImagen=0x7f060023;
+        public static final int hello_world=0x7f06002b;
+        public static final int index_informacionImagen=0x7f060027;
         public static final int main_layout_btn_ok_text=0x7f060005;
         public static final int main_layout_content=0x7f060004;
         /**  Main Layout 
@@ -117,7 +126,7 @@ public final class R {
         /**  Preview Layout 
          */
         public static final int preview_layout_title=0x7f060009;
-        public static final int splashscreen_informacion_imagen=0x7f060024;
+        public static final int splashscreen_informacion_imagen=0x7f060028;
         public static final int take_a_picture_layout_btn_help=0x7f060007;
         public static final int take_a_picture_layout_content_error_picture_type=0x7f060008;
         /**  Take a Picture Layout 
@@ -132,8 +141,8 @@ public final class R {
         public static final int thanks_layout_title_ok=0x7f06000f;
         public static final int thanks_layout_title_ok_content=0x7f060012;
         public static final int thanks_layout_title_ok_error=0x7f060013;
-        public static final int title_activity_transparent=0x7f060025;
-        public static final int transparent_activity_cerrar=0x7f060029;
+        public static final int title_activity_transparent=0x7f060029;
+        public static final int transparent_activity_cerrar=0x7f06002d;
     }
     public static final class style {
         /** 
