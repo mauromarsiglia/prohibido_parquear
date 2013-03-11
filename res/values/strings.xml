@@ -62,6 +62,12 @@
     <string name="dialog_exit_btn_aceptar">Salir</string>
     <string name="dialog_exit_btn_cancelar">Atras</string>
     
+    <!-- Dialog BACK ADDRESS -->
+    <string name="dialog_back_address_title">Title</string>
+    <string name="dialog_back_address_content">Contenido</string>
+    <string name="dialog_back_address_btn_aceptar">Detectar por GPS</string>
+    <string name="dialog_back_address_btn_cancelar">Cancelar</string>
+    
     <string name="index_informacionImagen">Prohibido parquear</string>
     <string name="splashscreen_informacion_imagen">Prohibido parquear</string>
     <string name="title_activity_transparent">TransparentActivity</string>
