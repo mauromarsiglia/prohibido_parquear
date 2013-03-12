@@ -89,7 +89,6 @@ public class GeographicLocation extends Activity implements LocationListener {
 
 	@Override
 	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
 
 		if (location != null) {
 			Manager.getInstance().setLongitude(
@@ -102,12 +101,12 @@ public class GeographicLocation extends Activity implements LocationListener {
 			Log.i("localizacion", "localizacion");
 			// AppGlobal.getInstance().dispatcher.open(GeographicLocation.this,
 			// "thanks", true);
+			
 			Intent intent = new Intent();
 			intent.setClass(this, Thanks.class);
 			startActivity(intent);
 			finish();
 		}
-
 	}
 
 	@Override

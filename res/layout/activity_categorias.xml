@@ -8,27 +8,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Categories" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="false"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/activity_categorias_listado_categorias"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/listado_categorias"
-            android:layout_width="fill_parent"
-            android:layout_height="358dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView1"
-            android:layout_centerHorizontal="true" >
+    <ProgressBar
+        android:id="@+id/carga_categoria_progreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="116dp" />
 
-        </ListView>
+    <ListView
+        android:id="@+id/listado_categorias"
+        android:layout_width="fill_parent"
+        android:layout_height="358dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" >
+    </ListView>
 
 </RelativeLayout>

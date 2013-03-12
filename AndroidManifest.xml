@@ -9,6 +9,7 @@
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -38,7 +39,7 @@
         
         <activity
             android:name="alcaldiadebarranquilla.prohibidoparquear.Categories"
-            android:label="@string/main_layout_title" >
+            android:label="@string/categories_layout_list" >
         </activity>
         
         <activity

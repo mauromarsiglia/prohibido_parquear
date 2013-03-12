@@ -45,7 +45,8 @@ public class TakeAPicture extends Activity {
 	private final String TAG = "TakeAPicture";
 	private static final int SELECT_PHOTO = 100;
 	protected static final int ON_IMAGE_ERROR = 1;
-	protected static final int ON_IMAGE_OK = 2;
+	protected static
+	final int ON_IMAGE_OK = 2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -264,41 +265,6 @@ public class TakeAPicture extends Activity {
 		return orientation;
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-			this.buildAlertExit();
-		}
-		return super.onKeyDown(keyCode, event);
-	}
 
-	private void buildAlertExit() {
-
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(R.string.dialog_exit_content)
-				.setTitle(R.string.dialog_exit_title)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setCancelable(false)
-				.setPositiveButton(R.string.dialog_exit_btn_aceptar,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-								mPreview.stop();
-								finish();
-							}
-						})
-				.setNegativeButton(R.string.dialog_exit_btn_cancelar,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-								dialog.cancel();
-							}
-						});
-		final AlertDialog alert = builder.create();
-		alert.show();
-
-	}
 
 }

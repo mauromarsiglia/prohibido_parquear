@@ -84,4 +84,5 @@
     <string name="activity_categorias_listado_categorias">Listado de categorias</string>
     <string name="name_category">Nombre de la categoria</string>
 
+    <string name="categories_layout_list">Lista de categorias</string>
 </resources>

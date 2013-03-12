@@ -13,23 +13,35 @@ import alcaldiadebarranquilla.prohibidoparquear.controller.Manager;
 import alcaldiadebarranquilla.prohibidoparquear.library.Category;
 import alcaldiadebarranquilla.prohibidoparquear.library.ItemCategoryAdapter;
 import alcaldiadebarranquilla.prohibidoparquear.restful.DoRest;
-import alcaldiadebarranquilla.prohibidoparquear.restful.DoRestEventListener;
 import alcaldiadebarranquilla.prohibidoparquear.restful.DoRest.Verbs;
+import alcaldiadebarranquilla.prohibidoparquear.restful.DoRestEventListener;
 import alcaldiadebarranquilla.prohibidoparquear.util.AppConfig;
+import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 public class Categories extends Activity {
 
 	private static final String TAG = "Categories";
 	private Manager manager;
+	private static final int SinConexion = 1;
+	private static final int ErrorGeneral = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,7 @@ public class Categories extends Activity {
 		} else {
 			getCategories();
 		}
+	
 	}
 
 	public void fillCategories() {
@@ -53,6 +66,8 @@ public class Categories extends Activity {
 		ItemCategoryAdapter adapter = new ItemCategoryAdapter(this,
 				manager.getCategories());
 		lista.setAdapter(adapter);
+		ProgressBar progreso = (ProgressBar) findViewById(R.id.carga_categoria_progreso);
+		progreso.setVisibility(View.GONE);
 		lista.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -66,12 +81,14 @@ public class Categories extends Activity {
 	}
 
 	public void CambiarActivity(Category cat) {
-		Intent intent = new Intent();
-		intent.setClass(this, TakeAPicture.class);
+		
 		Manager manager = Manager.getInstance();
 		manager.setSelectedCategory(cat.getId());
-		startActivity(intent);
-		finish();
+		
+		
+		
+		AppGlobal.getInstance().dispatcher.open(Categories.this,
+				"take", false);
 	}
 
 	@Override
@@ -95,7 +112,9 @@ public class Categories extends Activity {
 
 			@Override
 			public void onError() {
-				Log.e(TAG, "Se present— un error al cargar las categorias");
+				Log.e(TAG, "Se presento un error al cargar las categorias");
+				//showCategoriesError();
+				showCategoriesError();
 			}
 
 			@Override
@@ -162,8 +181,135 @@ public class Categories extends Activity {
 	}
 
 	protected void showCategoriesError() {
-		Log.e(TAG,
-				"Error, debe mostrar mensaje de alerta con opcion de reintentar y validad conexion a internet");
+		ProgressBar progreso = (ProgressBar) findViewById(R.id.carga_categoria_progreso);
+		progreso.setVisibility(View.GONE);
+		if(!verificaConexion(this)){
+			Log.e(TAG,
+					"Por favor verifique conexion a internet");
+			onCreateDialog(SinConexion);
+			showDialog(SinConexion);
+		}else{
+			onCreateDialog(ErrorGeneral);
+			showDialog(ErrorGeneral);
+			Log.e(TAG,
+					"Error, debe mostrar mensaje de alerta con opcion de reintentar y validad conexion a internet");
+		}
+	}
+	public static boolean verificaConexion(Context ctx) {
+	    boolean bConectado = false;
+	    ConnectivityManager connec = (ConnectivityManager) ctx
+	            .getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo[] redes = connec.getAllNetworkInfo();
+	    for (int i = 0; i < 2; i++) {
+	  
+	        if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
+	            bConectado = true;
+	        }
+	    }
+	    return bConectado;
+	}
+	
+	protected Dialog onCreateDialog(int id) {
+	    Dialog dialogo = null;
+	 
+	    switch(id)
+	    {
+	        case SinConexion:
+	            dialogo = crearDialogoAlerta();
+	            break;
+	        case ErrorGeneral:
+	            dialogo = crearDialogoConfirmacion();
+	            break;
+	        //...
+	        default:
+	            dialogo = null;
+	            break;
+	    }
+	 
+	    return dialogo;
+	}
+	
+	private Dialog crearDialogoAlerta()
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		 
+	    builder.setTitle("Confirmacion");
+	    builder.setMessage("Por favor verifique su conexion a internet");
+	    builder.setPositiveButton("Reintentar", new OnClickListener() {
+	    public void onClick(DialogInterface dialog, int which) {
+	        Log.i("Dialogos", "Confirmacion Aceptada.");
+	        dialog.cancel();
+	        getCategories();
+	    }
+	    });
+	    builder.setNegativeButton("Cancelar", new OnClickListener() {
+	    public void onClick(DialogInterface dialog, int which) {
+	        Log.i("Dialogos", "Confirmacion Cancelada.");
+	        dialog.cancel();
+	    }
+	    });
+	 
+	    return builder.create();
+	}
+	
+	private Dialog crearDialogoConfirmacion()
+	{
+	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	 
+	    builder.setTitle("Confirmacion");
+	    builder.setMessage("Se ha producido un error al momento de listar las categorias");
+	    builder.setPositiveButton("Reintentar", new OnClickListener() {
+	    public void onClick(DialogInterface dialog, int which) {
+	        Log.i("Dialogos", "Confirmacion Aceptada.");
+	        dialog.cancel();
+	        getCategories();
+	    }
+	    });
+	    builder.setNegativeButton("Cancelar", new OnClickListener() {
+	    public void onClick(DialogInterface dialog, int which) {
+	        Log.i("Dialogos", "Confirmacion Cancelada.");
+	        dialog.cancel();
+	    }
+	    });
+	 
+	    return builder.create();
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			this.buildAlertExit();
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
+	private void buildAlertExit() {
+
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.dialog_exit_content)
+				.setTitle(R.string.dialog_exit_title)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setCancelable(false)
+				.setPositiveButton(R.string.dialog_exit_btn_aceptar,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								finish();
+							}
+						})
+				.setNegativeButton(R.string.dialog_exit_btn_cancelar,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								dialog.cancel();
+							}
+						});
+		final AlertDialog alert = builder.create();
+		alert.show();
+
+	}
 }
+
+
