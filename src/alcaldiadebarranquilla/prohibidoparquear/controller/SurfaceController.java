@@ -124,13 +124,20 @@ public class SurfaceController extends SurfaceView implements
 
 		if (mCamera != null) {
 			// camera.setDisplayOrientation(90);
-			if (Integer.parseInt(Build.VERSION.SDK) >= 8) {
+			
+			int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+			
+			if (currentapiVersion >= 8) {
 
-				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+				int orientacion = getResources().getConfiguration().orientation;
+				
+				Log.i(TAG, "The current orientation is: "+orientacion);
+				
+				if (orientacion == Configuration.ORIENTATION_PORTRAIT) {
 					setDisplayOrientation(mCamera, 90);
 				}
 
-				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+				if (orientacion == Configuration.ORIENTATION_LANDSCAPE) {
 					setDisplayOrientation(mCamera, 0);
 				}
 
