@@ -69,7 +69,7 @@ public class Thanks extends Activity {
 
 		// requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_thanks);
-		AppConfig.setDeveloperEnviroment();
+		AppConfig.setProductionEnviroment();
 
 		this.mensaje = (TextView) findViewById(R.id.error);
 
