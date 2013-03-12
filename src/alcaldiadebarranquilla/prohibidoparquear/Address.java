@@ -33,15 +33,19 @@ public class Address extends Activity {
 		String dir = this.direccion.getText().toString();
 
 		if (dir.length() > 4) {
-			AppGlobal.getInstance().dispatcher.open(Address.this, "thanks",
-					true);
-		} else {
-			Toast.makeText(
-					getBaseContext(),
-					getResources().getString(
-							R.string.direccion_layout_error_input),
-					Toast.LENGTH_LONG).show();
-		}
+			if(dir.replace(" ", "").length()>0){
+				AppGlobal.getInstance().dispatcher.open(Address.this, "thanks",
+						true);
+				return;
+			}
+		} 
+		
+		Toast.makeText(
+				getBaseContext(),
+				getResources().getString(
+						R.string.direccion_layout_error_input),
+				Toast.LENGTH_LONG).show();
+		
 
 	}
 
