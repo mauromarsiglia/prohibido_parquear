@@ -37,7 +37,11 @@
         </activity>
         
         <activity
+<<<<<<< HEAD
             android:name="alcaldiadebarranquilla.prohibidoparquear.Categories"
+=======
+            android:name="alcaldiadebarranquilla.prohibidoparquear.Categorias"
+>>>>>>> e71846373e6ec13585da8938009e0a79c3f4bd57
             android:label="@string/main_layout_title" >
         </activity>
         
