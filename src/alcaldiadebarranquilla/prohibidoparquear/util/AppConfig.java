@@ -15,10 +15,10 @@ public class AppConfig {
 	private static final String PRO_PUSHERS_API_URL = "http://geoevents.herokuapp.com/api/pushers/";
 	private static final String PRO_PUSHER_KEY = "6a62f4e09633bd32b4efcac14f694bb0b525f3d4";
 	private static final String PRO_PUSHER_APP_KEY = "89b0ea9c3293aa3ccf64b1cc72e254d7cc4e3a87";
-	//APP KEY => 89b0ea9c3293aa3ccf64b1cc72e254d7cc4e3a87
-	//IDENTIFICADOR = 2
-	//KEY => 6a62f4e09633bd32b4efcac14f694bb0b525f3d4
-	//APP TOKEN => 89b0ea9c3293aa3ccf64b1cc72e254d7cc4e3a87
+	// APP KEY => 89b0ea9c3293aa3ccf64b1cc72e254d7cc4e3a87
+	// IDENTIFICADOR = 2
+	// KEY => 6a62f4e09633bd32b4efcac14f694bb0b525f3d4
+	// APP TOKEN => 89b0ea9c3293aa3ccf64b1cc72e254d7cc4e3a87
 
 	// URL
 	public static String PUSHERS_API_URL;

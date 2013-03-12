@@ -36,7 +36,7 @@ public class AppGlobal {
 		dispatcher.addHandler("geographic", GeographicLocation.class);
 		dispatcher.addHandler("thanks", Thanks.class);
 		dispatcher.addHandler("address", Address.class);
-		
+
 	}
 
 	public static synchronized AppGlobal getInstance() {
@@ -45,7 +45,6 @@ public class AppGlobal {
 		}
 		return instance;
 	}
-
 
 	public void showSimpleDialog(Activity handler, String title, String content) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(handler);

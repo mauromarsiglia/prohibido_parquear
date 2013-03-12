@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -35,93 +34,95 @@ import android.widget.RelativeLayout;
 
 /**
  * @author Luster
- *
+ * 
  */
-public class TakeAPicture extends Activity{
-	
-    private SurfaceController mPreview;
-    private ImageButton btn_take_a_pic;
+@SuppressLint("HandlerLeak")
+public class TakeAPicture extends Activity {
+
+	private SurfaceController mPreview;
+	private ImageButton btn_take_a_pic;
 	private ImageButton btn_gallery;
 	private final String TAG = "TakeAPicture";
 	private static final int SELECT_PHOTO = 100;
 	protected static final int ON_IMAGE_ERROR = 1;
 	protected static final int ON_IMAGE_OK = 2;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        Log.i(TAG, "onCreate");
-        
-        setContentView(R.layout.activity_take_picture);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        // Create our Preview view and set it as the content of our activity.
-        mPreview = new SurfaceController(this);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_surface);
-        preview.addView(mPreview);
-        
-        Manager manager = Manager.getInstance();
-		
-		if(!manager.isPrimeraVezAyuda(this)){
+		Log.i(TAG, "onCreate");
+
+		setContentView(R.layout.activity_take_picture);
+
+		// Create our Preview view and set it as the content of our activity.
+		mPreview = new SurfaceController(this);
+		FrameLayout preview = (FrameLayout) findViewById(R.id.camera_surface);
+		preview.addView(mPreview);
+
+		Manager manager = Manager.getInstance();
+
+		if (!manager.isPrimeraVezAyuda(this)) {
 			RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 			ventanaflotante.setVisibility(View.GONE);
 			activarBotones();
 		}
-        
-    }
-    
-    public void cerrarVentana(View view){
+
+	}
+
+	public void cerrarVentana(View view) {
 		RelativeLayout ventanaflotante = (RelativeLayout) findViewById(R.id.ventana_flotante);
 		ventanaflotante.setVisibility(View.GONE);
 		activarBotones();
-		SharedPreferences settings = getSharedPreferences("perfil", MODE_PRIVATE);
+		SharedPreferences settings = getSharedPreferences("perfil",
+				MODE_PRIVATE);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("primeravez", "no");
 		editor.commit();
 		activarBotones();
 	}
-    
-    @Override
-    public void onStop(){
-    	super.onStop();
-    	Log.i(TAG, "onStop");
-    	mPreview.stop();	
-    }
-    
-    @Override
-    public void onResume(){
-    	super.onResume();
-    	Log.i(TAG, "onResume");
-    	mPreview.resume();
-    }
-    
-    public void takePicture(){
-    	Log.i(TAG, "takePicture");
-    	mPreview.takeAPicAction();
-    }
-    
-    public void activarBotones(){
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		Log.i(TAG, "onStop");
+		mPreview.stop();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		Log.i(TAG, "onResume");
+		mPreview.resume();
+	}
+
+	public void takePicture() {
+		Log.i(TAG, "takePicture");
+		mPreview.takeAPicAction();
+	}
+
+	public void activarBotones() {
 		btn_take_a_pic = (ImageButton) findViewById(R.id.btn_pic);
 		btn_take_a_pic.setOnClickListener(new OnClickListener() {
-			
-		@Override
-		public void onClick(View view) {
+
+			@Override
+			public void onClick(View view) {
 				takePicture();
 			}
 		});
-		
+
 		btn_gallery = (ImageButton) findViewById(R.id.btn_back);
 		btn_gallery.setOnClickListener(new OnClickListener() {
 
-		@Override
-		public void onClick(View view) {
+			@Override
+			public void onClick(View view) {
 				openUserGallery();
 			}
 		});
 	}
-    
-    protected void openUserGallery() {
-    	Log.i(TAG, "openUserGallery");
+
+	protected void openUserGallery() {
+		Log.i(TAG, "openUserGallery");
 		loadIntentForLoadImages();
 	}
 
@@ -131,12 +132,12 @@ public class TakeAPicture extends Activity{
 		photoPickerIntent.setType("image/*");
 		startActivityForResult(photoPickerIntent, SELECT_PHOTO);
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		
+
 		Log.i(TAG, "onActivityResult");
-		
+
 		if (resultCode != RESULT_CANCELED) {
 			if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK
 					&& null != data) {
@@ -151,7 +152,7 @@ public class TakeAPicture extends Activity{
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	private class PrepareImageTask extends AsyncTask<Uri, Integer, Bitmap> {
 
 		@Override
@@ -173,9 +174,9 @@ public class TakeAPicture extends Activity{
 		}
 
 		private Bitmap prepareImageUri(Uri image) {
-			
+
 			Log.i(TAG, "prepareImageUri");
-			
+
 			Bitmap original_bmp = null;
 			try {
 				original_bmp = MediaStore.Images.Media.getBitmap(
@@ -205,7 +206,7 @@ public class TakeAPicture extends Activity{
 		}
 
 	}
-	
+
 	private Bitmap thumbImage(Bitmap bmp, int newWidth, int newHeight) {
 		int origWidth = bmp.getWidth();
 		int origHeight = bmp.getHeight();
@@ -217,14 +218,14 @@ public class TakeAPicture extends Activity{
 		Bitmap scaled = Bitmap.createScaledBitmap(bmp, newWidth, tNH, true);
 		return scaled;
 	}
-	
+
 	@SuppressLint("HandlerLeak")
 	private Handler preparedImage = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			
+
 			AppGlobal.getInstance().hideLoading();
-			
+
 			switch ((int) msg.what) {
 			case ON_IMAGE_ERROR:
 				AppGlobal
@@ -237,17 +238,17 @@ public class TakeAPicture extends Activity{
 			case ON_IMAGE_OK:
 				Bitmap bmp = (Bitmap) msg.obj;
 				Manager.getInstance().setImageTemp(bmp);
-				AppGlobal.getInstance().dispatcher.open(
-						TakeAPicture.this, "preview", true);
+				AppGlobal.getInstance().dispatcher.open(TakeAPicture.this,
+						"preview", true);
 				break;
 			}
 		}
 	};
-	
+
 	private int getRotateAngle(Uri imageUri) {
-		
+
 		Log.i(TAG, "getRotateAngle");
-		
+
 		String[] columns = { MediaStore.Images.Media.DATA,
 				MediaStore.Images.Media.ORIENTATION };
 		Cursor cursor = getContentResolver().query(imageUri, columns, null,
@@ -262,7 +263,7 @@ public class TakeAPicture extends Activity{
 		cursor.close();
 		return orientation;
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
@@ -270,9 +271,9 @@ public class TakeAPicture extends Activity{
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	private void buildAlertExit() {
-		
+
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.dialog_exit_content)
 				.setTitle(R.string.dialog_exit_title)
@@ -297,7 +298,7 @@ public class TakeAPicture extends Activity{
 						});
 		final AlertDialog alert = builder.create();
 		alert.show();
-		
+
 	}
-	
+
 }

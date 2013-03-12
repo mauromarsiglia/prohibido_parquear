@@ -15,27 +15,27 @@ import android.widget.ImageView;
 
 /**
  * @author Soldier
- *
+ * 
  */
 public class Preview extends Activity {
-	
+
 	private ImageButton btn_done;
 	private ImageButton btn_cancel;
 	private ImageView image_preview;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_preview);
-		
+
 		btn_done = (ImageButton) findViewById(R.id.btn_done);
 		btn_done.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
 				Manager.getInstance().addImage();
-				AppGlobal.getInstance().dispatcher.open(
-						Preview.this, "geographic", true);
+				AppGlobal.getInstance().dispatcher.open(Preview.this,
+						"geographic", true);
 			}
 		});
 
@@ -43,8 +43,8 @@ public class Preview extends Activity {
 		btn_cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				AppGlobal.getInstance().dispatcher.open(
-						Preview.this, "take", true);
+				AppGlobal.getInstance().dispatcher.open(Preview.this, "take",
+						true);
 			}
 		});
 
@@ -54,7 +54,7 @@ public class Preview extends Activity {
 		// set the image
 		image_preview = (ImageView) findViewById(R.id.image_preview);
 		image_preview.setImageBitmap(image);
-		
-	}	
+
+	}
 
 }

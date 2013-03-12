@@ -19,44 +19,44 @@ import android.util.Log;
 
 /**
  * @author Luster
- *
+ * 
  */
-public class GeographicLocation extends Activity implements LocationListener{
+public class GeographicLocation extends Activity implements LocationListener {
 
 	private LocationManager manager;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.acticity_geographic_location);
 	}
-	
-	private void setGPSLocation(){
-		
+
+	private void setGPSLocation() {
+
 		this.manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
+
 		if (!manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-			
+
 			buildAlertMessageNoGps();
-			
-		}else{
-			
+
+		} else {
+
 			manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1,
 					0, this);
-			
+
 		}
-		
+
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		setGPSLocation();
 	}
-	
+
 	private void buildAlertMessageNoGps() {
-			
+
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.dialog_no_gps_content)
 				.setTitle(R.string.dialog_no_gps_title)
@@ -77,51 +77,55 @@ public class GeographicLocation extends Activity implements LocationListener{
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								AppGlobal.getInstance().dispatcher.open(
-										GeographicLocation.this, "address", true);
+										GeographicLocation.this, "address",
+										true);
 								dialog.cancel();
 							}
 						});
 		final AlertDialog alert = builder.create();
 		alert.show();
-		
+
 	}
-	
+
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 
 		if (location != null) {
-			Manager.getInstance().setLongitude(Double.toString(location.getLongitude()));
-			Manager.getInstance().setLatitude(Double.toString(location.getLatitude()));
-			
+			Manager.getInstance().setLongitude(
+					Double.toString(location.getLongitude()));
+			Manager.getInstance().setLatitude(
+					Double.toString(location.getLatitude()));
+
 			this.manager.removeUpdates(this);
-			//Ir a gracias, puede ser aquí el error
-			Log.i("localizacion","localizacion");
-			//AppGlobal.getInstance().dispatcher.open(GeographicLocation.this, "thanks", true);
+			// Ir a gracias, puede ser aquí el error
+			Log.i("localizacion", "localizacion");
+			// AppGlobal.getInstance().dispatcher.open(GeographicLocation.this,
+			// "thanks", true);
 			Intent intent = new Intent();
 			intent.setClass(this, Thanks.class);
 			startActivity(intent);
 			finish();
 		}
-		
+
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

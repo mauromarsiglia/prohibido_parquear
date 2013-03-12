@@ -18,76 +18,75 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class SurfaceController extends SurfaceView
-	implements SurfaceHolder.Callback{
-	
+public class SurfaceController extends SurfaceView implements
+		SurfaceHolder.Callback {
+
 	private SurfaceHolder mHolder;
-    private Camera mCamera;
-    private Context context;
-    private final String TAG = "SurfaceController";
-    protected static final int ON_IMAGE_ERROR = 1;
+	private Camera mCamera;
+	private Context context;
+	private final String TAG = "SurfaceController";
+	protected static final int ON_IMAGE_ERROR = 1;
 	protected static final int ON_IMAGE_OK = 2;
-	
 
-    public SurfaceController(Context context) {
-        super(context);
-        // TODO Auto-generated constructor stub
-        this.context = context;
-        mHolder = getHolder();
-        mHolder.addCallback(this);
-        // deprecated setting, but required on Android versions prior to 3.0
-        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-    }
-    
-    public void stop(){
-    	if(Manager.getInstance().isPreviewing()){
-    		mCamera.stopPreview();
-    		Manager.getInstance().setPreviewing(false);
-    		mCamera.release();        	
-    	}
-    }
-    
-    public void resume(){
-    	//try {
-    		if(mCamera!=null){
-    			//mCamera.reconnect();
-    			//mCamera.startPreview();
-    		}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    }
+	public SurfaceController(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+		this.context = context;
+		mHolder = getHolder();
+		mHolder.addCallback(this);
+		// deprecated setting, but required on Android versions prior to 3.0
+		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+	}
 
-    public void surfaceCreated(SurfaceHolder holder) {
-        // The Surface has been created, now tell the camera where to draw the preview.
-        try {
-        	
-        	mCamera = Camera.open();
-        	
-        	if(mCamera!=null){
-        		mCamera.setPreviewDisplay(holder);
-                mCamera.startPreview();
-        	}
-        } catch (IOException e) {
-            Log.i(TAG, "Error setting camera preview: " + e.getMessage());
-        }
-        
-    }
+	public void stop() {
+		if (Manager.getInstance().isPreviewing()) {
+			mCamera.stopPreview();
+			Manager.getInstance().setPreviewing(false);
+			mCamera.release();
+		}
+	}
 
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        // empty. Take care of releasing the Camera preview in your activity.
-    	Log.i(TAG, "surfaceDestroyed is call");
-    	/*if(Manager.getInstance().isPreviewing()){
-    		mCamera.stopPreview();
-        	Manager.getInstance().setPreviewing(false);
-    		mCamera.release();
-    	}*/
-    	
-		//mCamera = null;
-    }
-    
-    protected void setDisplayOrientation(Camera camera, int angle) {
+	public void resume() {
+		// try {
+		if (mCamera != null) {
+			// mCamera.reconnect();
+			// mCamera.startPreview();
+		}
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+	}
+
+	public void surfaceCreated(SurfaceHolder holder) {
+		// The Surface has been created, now tell the camera where to draw the
+		// preview.
+		try {
+
+			mCamera = Camera.open();
+
+			if (mCamera != null) {
+				mCamera.setPreviewDisplay(holder);
+				mCamera.startPreview();
+			}
+		} catch (IOException e) {
+			Log.i(TAG, "Error setting camera preview: " + e.getMessage());
+		}
+
+	}
+
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// empty. Take care of releasing the Camera preview in your activity.
+		Log.i(TAG, "surfaceDestroyed is call");
+		/*
+		 * if(Manager.getInstance().isPreviewing()){ mCamera.stopPreview();
+		 * Manager.getInstance().setPreviewing(false); mCamera.release(); }
+		 */
+
+		// mCamera = null;
+	}
+
+	protected void setDisplayOrientation(Camera camera, int angle) {
 		Method downPolymorphic;
 		try {
 			downPolymorphic = camera.getClass().getMethod(
@@ -99,43 +98,43 @@ public class SurfaceController extends SurfaceView
 		}
 	}
 
-    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        // If your preview can change or rotate, take care of those events here.
-        // Make sure to stop the preview before resizing or reformatting it.
+	public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+		// If your preview can change or rotate, take care of those events here.
+		// Make sure to stop the preview before resizing or reformatting it.
 
-        if (mHolder.getSurface() == null){
-          // preview surface does not exist
-          return;
-        }
+		if (mHolder.getSurface() == null) {
+			// preview surface does not exist
+			return;
+		}
 
-        // stop preview before making changes
-        try {
-            mCamera.stopPreview();
-        } catch (Exception e){
-          // ignore: tried to stop a non-existent preview
-        }
+		// stop preview before making changes
+		try {
+			mCamera.stopPreview();
+		} catch (Exception e) {
+			// ignore: tried to stop a non-existent preview
+		}
 
-        // set preview size and make any resize, rotate or
-        // reformatting changes here
-        Camera.Parameters p = null;
-        
-        if(mCamera!=null){
-        	p = mCamera.getParameters();
-        }
-        
-        if (mCamera != null) {
+		// set preview size and make any resize, rotate or
+		// reformatting changes here
+		Camera.Parameters p = null;
+
+		if (mCamera != null) {
+			p = mCamera.getParameters();
+		}
+
+		if (mCamera != null) {
 			// camera.setDisplayOrientation(90);
-			if (Integer.parseInt(Build.VERSION.SDK) >= 8){
-				
+			if (Integer.parseInt(Build.VERSION.SDK) >= 8) {
+
 				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
 					setDisplayOrientation(mCamera, 90);
 				}
-				
+
 				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 					setDisplayOrientation(mCamera, 0);
 				}
-				
-			}else {
+
+			} else {
 				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
 					p.set("orientation", "portrait");
 					p.set("rotation", 90);
@@ -143,27 +142,27 @@ public class SurfaceController extends SurfaceView
 				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 					p.set("orientation", "landscape");
 					p.set("rotation", 90);
-					
+
 				}
 			}
 		}
-        
-        // start preview with new settings
-        try {
-        	if(mCamera!=null){
-        		mCamera.setPreviewDisplay(mHolder);
-                mCamera.startPreview();
-                Manager.getInstance().setPreviewing(true);
-        	}else{
-        		Manager.getInstance().setPreviewing(false);
-        	}
-        } catch (Exception e){
-        	Manager.getInstance().setPreviewing(false);
-            Log.d(TAG, "Error starting camera preview: " + e.getMessage());
-        }
-    }
-    
-    public void takeAPicAction() {
+
+		// start preview with new settings
+		try {
+			if (mCamera != null) {
+				mCamera.setPreviewDisplay(mHolder);
+				mCamera.startPreview();
+				Manager.getInstance().setPreviewing(true);
+			} else {
+				Manager.getInstance().setPreviewing(false);
+			}
+		} catch (Exception e) {
+			Manager.getInstance().setPreviewing(false);
+			Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+		}
+	}
+
+	public void takeAPicAction() {
 
 		ShutterCallback shutterCallBack = new ShutterCallback() {
 			@Override
@@ -200,12 +199,15 @@ public class SurfaceController extends SurfaceView
 								scaled_bmp.getHeight(), matrix, true);
 
 						// Save the image and call preview
-						Manager.getInstance().setImageTemp(scaled_with_orientation);
-						/*AppGlobal.getInstance().dispatcher.open(
-								context, "preview", true);*/
+						Manager.getInstance().setImageTemp(
+								scaled_with_orientation);
+						/*
+						 * AppGlobal.getInstance().dispatcher.open( context,
+						 * "preview", true);
+						 */
 						Intent i = new Intent(context, Preview.class);
 						context.startActivity(i);
-						
+
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -213,10 +215,11 @@ public class SurfaceController extends SurfaceView
 
 			}
 		};
-		mCamera.takePicture(shutterCallBack, pictureCallBack, pictureCallBackJPG);
+		mCamera.takePicture(shutterCallBack, pictureCallBack,
+				pictureCallBackJPG);
 	}
-    
-    private Bitmap thumbImage(Bitmap bmp, int newWidth, int newHeight) {
+
+	private Bitmap thumbImage(Bitmap bmp, int newWidth, int newHeight) {
 		int origWidth = bmp.getWidth();
 		int origHeight = bmp.getHeight();
 		if (newWidth >= origWidth) {
@@ -227,16 +230,15 @@ public class SurfaceController extends SurfaceView
 		Bitmap scaled = Bitmap.createScaledBitmap(bmp, newWidth, tNH, true);
 		return scaled;
 	}
-    
-    public static Camera getCameraInstance(){
-        Camera c = null;
-        try {
-            c = Camera.open(); // attempt to get a Camera instance
-        }
-        catch (Exception e){
-            // Camera is not available (in use or does not exist)
-        }
-        return c; // returns null if camera is unavailable
-    }    
+
+	public static Camera getCameraInstance() {
+		Camera c = null;
+		try {
+			c = Camera.open(); // attempt to get a Camera instance
+		} catch (Exception e) {
+			// Camera is not available (in use or does not exist)
+		}
+		return c; // returns null if camera is unavailable
+	}
 
 }

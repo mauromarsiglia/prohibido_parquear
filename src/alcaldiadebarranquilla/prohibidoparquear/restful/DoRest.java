@@ -39,9 +39,9 @@ public class DoRest {
 	private Verbs verb;
 
 	private DoRestEventListener listener;
-	
-	public DoRest(){
-		
+
+	public DoRest() {
+
 	}
 
 	public DoRest(String url, Verbs verb, List<NameValuePair> params) {
@@ -53,7 +53,7 @@ public class DoRest {
 			Log.e(TAG, e.getMessage());
 		}
 	}
-	
+
 	private Handler doHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -141,8 +141,9 @@ public class DoRest {
 			HttpPost httrest = new HttpPost(url);
 			httrest.setHeader("Accept-Language", "es-es");
 			httrest.setHeader("Accept", "application/json");
-			//httrest.setHeader("Content-type", "application/json");
-			httrest.setHeader("Content-Type", "application/x-www-form-urlencoded");
+			// httrest.setHeader("Content-type", "application/json");
+			httrest.setHeader("Content-Type",
+					"application/x-www-form-urlencoded");
 			httrest.setHeader("Accept-Encoding", "gzip, deflate");
 			httrest.setEntity(body);
 
@@ -160,15 +161,16 @@ public class DoRest {
 			}
 
 			return handleResponse(response);
-			
+
 		}
 	}
-	
-	public DoRest(String url, Verbs verb, List<NameValuePair> params, List<Bitmap> images) {
-		
+
+	public DoRest(String url, Verbs verb, List<NameValuePair> params,
+			List<Bitmap> images) {
+
 		this.url = url;
 		this.verb = verb;
-		
+
 		try {
 			this.params = new UrlEncodedFormEntity(params);
 		} catch (UnsupportedEncodingException e) {

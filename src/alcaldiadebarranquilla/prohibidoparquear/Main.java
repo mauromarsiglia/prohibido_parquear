@@ -37,7 +37,7 @@ public class Main extends Activity {
 		
 		if(take == null){
 			if(!manager.isPrimeraVezMensaje(this)){
-					Intent i = new Intent(this, Categorias.class);
+					Intent i = new Intent(this, Categories.class);
 					startActivity(i);
 					finish();
 			}	
@@ -45,11 +45,10 @@ public class Main extends Activity {
 	}
 	
 	public void takePicture(View view){
-		Intent i = new Intent(this, Categorias.class);
+		Intent i = new Intent(this, Categories.class);
 		startActivity(i);
 		finish();
 	}
-	
 	
 	@Override
 	public void onConfigurationChanged(Configuration config){

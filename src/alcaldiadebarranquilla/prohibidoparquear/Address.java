@@ -15,34 +15,36 @@ import android.widget.Toast;
 
 /**
  * @author Soldier
- *
+ * 
  */
 public class Address extends Activity {
-	
+
 	private EditText direccion;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_address);
-		this.direccion = (EditText) findViewById(R.id.editText1);		
+		this.direccion = (EditText) findViewById(R.id.editText1);
 	}
-	
-	public void btn_ok(View view){
-		
+
+	public void btn_ok(View view) {
+
 		String dir = this.direccion.getText().toString();
-		
-		if(dir.length()>4){
-			AppGlobal.getInstance().dispatcher.open(
-					Address.this, "thanks", true);
-		}else{
-			Toast.makeText(getBaseContext(),
-			        getResources().getString(R.string.direccion_layout_error_input),
-			        Toast.LENGTH_LONG).show();
+
+		if (dir.length() > 4) {
+			AppGlobal.getInstance().dispatcher.open(Address.this, "thanks",
+					true);
+		} else {
+			Toast.makeText(
+					getBaseContext(),
+					getResources().getString(
+							R.string.direccion_layout_error_input),
+					Toast.LENGTH_LONG).show();
 		}
-		
+
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
@@ -50,9 +52,9 @@ public class Address extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	private void buildAlertExit() {
-		
+
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.dialog_back_address_content)
 				.setTitle(R.string.dialog_back_address_title)
@@ -66,7 +68,7 @@ public class Address extends Activity {
 								dialog.dismiss();
 								AppGlobal.getInstance().dispatcher.open(
 										Address.this, "geographic", true);
-								
+
 							}
 						})
 				.setNegativeButton(R.string.dialog_back_address_btn_cancelar,
@@ -79,7 +81,7 @@ public class Address extends Activity {
 						});
 		final AlertDialog alert = builder.create();
 		alert.show();
-		
+
 	}
-	
+
 }

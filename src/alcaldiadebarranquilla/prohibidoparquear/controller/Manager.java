@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import alcaldiadebarranquilla.prohibidoparquear.library.Categoria;
+import alcaldiadebarranquilla.prohibidoparquear.library.Category;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
 /**
  * @author Luster
- *
+ * 
  */
 public class Manager {
-	
+
 	public final String PhoneModel = android.os.Build.MODEL;
 	public final String AndroidVersion = android.os.Build.VERSION.RELEASE;
 	private int selectedCategory;
@@ -31,22 +31,22 @@ public class Manager {
 	private boolean previewing;
 	private boolean primeraVezMensaje;
 	private boolean primeraVezAyuda;
-	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	
-	public static Manager getInstance(){
-		if(instance==null){
+	private ArrayList<Category> categorias;
+
+	public static Manager getInstance() {
+		if (instance == null) {
 			instance = new Manager();
 		}
 		return instance;
 	}
-	
-	private Manager(){
+
+	private Manager() {
 		this.images = new LinkedList<Bitmap>();
 		this.selectedCategory = 2;
 		this.previewing = false;
 	}
-	
-	public void reset(){
+
+	public void reset() {
 		this.longitude = "0";
 		this.latitude = "0";
 		this.clearImages();
@@ -60,19 +60,19 @@ public class Manager {
 	}
 
 	public void addImage() {
-		if(imageTemp!=null)
+		if (imageTemp != null)
 			this.images.add(this.imageTemp);
 		imageTemp = null;
 	}
-	
-	public Bitmap getLastImage(){
-		return this.images.get(this.images.size()-1);
+
+	public Bitmap getLastImage() {
+		return this.images.get(this.images.size() - 1);
 	}
-	
-	public void clearImages(){
+
+	public void clearImages() {
 		this.images.clear();
 	}
-	
+
 	public String getLatitude() {
 		return latitude;
 	}
@@ -112,7 +112,7 @@ public class Manager {
 	public void setResponseEvent(boolean responseEvent) {
 		this.responseEvent = responseEvent;
 	}
-	
+
 	/**
 	 * @return the imageTemp
 	 */
@@ -121,7 +121,8 @@ public class Manager {
 	}
 
 	/**
-	 * @param imageTemp the imageTemp to set
+	 * @param imageTemp
+	 *            the imageTemp to set
 	 */
 	public void setImageTemp(Bitmap imageTemp) {
 		this.imageTemp = imageTemp;
@@ -135,27 +136,27 @@ public class Manager {
 	}
 
 	/**
-	 * @param previewing the previewing to set
+	 * @param previewing
+	 *            the previewing to set
 	 */
 	public void setPreviewing(boolean previewing) {
 		this.previewing = previewing;
 	}
-	
-	
+
 	public boolean isPrimeraVezMensaje(Context context) {
-		SharedPreferences settings = context.getSharedPreferences("perfil", context.MODE_PRIVATE);
+		SharedPreferences settings = context.getSharedPreferences("perfil",
+				Context.MODE_PRIVATE);
 		String uso = settings.getString("uso", "false");
-		
-		if(uso.equalsIgnoreCase("false")){
-			primeraVezMensaje=true;
+
+		if (uso.equalsIgnoreCase("false")) {
+			primeraVezMensaje = true;
 			SharedPreferences.Editor editor = settings.edit();
-			editor.putString("uso","true");
+			editor.putString("uso", "true");
 			editor.commit();
-		}else{
-			primeraVezMensaje=false;
+		} else {
+			primeraVezMensaje = false;
 		}
-		
-		
+
 		return primeraVezMensaje;
 	}
 
@@ -165,13 +166,14 @@ public class Manager {
 
 	public boolean isPrimeraVezAyuda(Context context) {
 
-		SharedPreferences settings = context.getSharedPreferences("perfil", context.MODE_PRIVATE);
+		SharedPreferences settings = context.getSharedPreferences("perfil",
+				Context.MODE_PRIVATE);
 		String uso = settings.getString("primeravez", "si");
-		
-		if(uso.equalsIgnoreCase("si")){
-			primeraVezAyuda=true;
-		}else{
-			primeraVezAyuda=false;
+
+		if (uso.equalsIgnoreCase("si")) {
+			primeraVezAyuda = true;
+		} else {
+			primeraVezAyuda = false;
 		}
 		return primeraVezAyuda;
 	}
@@ -179,15 +181,13 @@ public class Manager {
 	public void setPrimeraVezAyuda(boolean primeraVezAyuda) {
 		this.primeraVezAyuda = primeraVezAyuda;
 	}
-	
-	
-	public void setCategorias(ArrayList<Categoria> lista){
-		this.categorias=lista;
+
+	public void setCategorias(ArrayList<Category> lista) {
+		this.categorias = lista;
 	}
-	
-	public ArrayList<Categoria> getCategorias(){
+
+	public ArrayList<Category> getCategories() {
 		return this.categorias;
 	}
-	
-	
+
 }
