@@ -96,7 +96,7 @@ public class Thanks extends Activity {
 	}
 
 	public void exit(View view) {
-		finish();
+		System.exit(0);
 	}
 
 	public void nuevoReporte(View view) {
