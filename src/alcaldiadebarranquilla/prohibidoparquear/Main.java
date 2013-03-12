@@ -37,14 +37,15 @@ public class Main extends Activity {
 		
 		if(take == null){
 			if(!manager.isPrimeraVezMensaje(this)){
-					Intent i = new Intent(this, TakeAPicture.class);
+					Intent i = new Intent(this, Categorias.class);
 					startActivity(i);
 					finish();
 			}	
 		}
 	}
+	
 	public void takePicture(View view){
-		Intent i = new Intent(this, TakeAPicture.class);
+		Intent i = new Intent(this, Categorias.class);
 		startActivity(i);
 		finish();
 	}

@@ -44,6 +44,16 @@ public class DoRest {
 		
 	}
 
+	public DoRest(String url, Verbs verb, List<NameValuePair> params) {
+		this.url = url;
+		this.verb = verb;
+		try {
+			this.params = new UrlEncodedFormEntity(params);
+		} catch (UnsupportedEncodingException e) {
+			Log.e(TAG, e.getMessage());
+		}
+	}
+	
 	private Handler doHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {

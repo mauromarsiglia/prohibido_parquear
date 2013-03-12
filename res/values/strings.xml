@@ -81,5 +81,7 @@
     
     <!-- Dialog IMAGE GALLERY -->
     <string name="continuar_sin_imagen">¿Desea continuar sin una fotografía del menor?</string>
+    <string name="activity_categorias_listado_categorias">Listado de categorias</string>
+    <string name="name_category">Nombre de la categoria</string>
 
 </resources>

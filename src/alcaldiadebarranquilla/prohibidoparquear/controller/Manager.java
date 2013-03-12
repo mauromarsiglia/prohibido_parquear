@@ -3,9 +3,11 @@
  */
 package alcaldiadebarranquilla.prohibidoparquear.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import alcaldiadebarranquilla.prohibidoparquear.library.Categoria;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -29,6 +31,7 @@ public class Manager {
 	private boolean previewing;
 	private boolean primeraVezMensaje;
 	private boolean primeraVezAyuda;
+	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	
 	public static Manager getInstance(){
 		if(instance==null){
@@ -49,6 +52,7 @@ public class Manager {
 		this.clearImages();
 		this.previewing = false;
 		this.selectedCategory = 2;
+		this.address = "";
 	}
 
 	public List<Bitmap> getImages() {
@@ -176,6 +180,14 @@ public class Manager {
 		this.primeraVezAyuda = primeraVezAyuda;
 	}
 	
+	
+	public void setCategorias(ArrayList<Categoria> lista){
+		this.categorias=lista;
+	}
+	
+	public ArrayList<Categoria> getCategorias(){
+		return this.categorias;
+	}
 	
 	
 }
