@@ -1,6 +1,7 @@
 package alcaldiadebarranquilla.prohibidoparquear.controller;
 
 import java.io.IOException;
+import android.app.Activity;
 import java.lang.reflect.Method;
 
 import alcaldiadebarranquilla.prohibidoparquear.Preview;
@@ -213,7 +214,8 @@ public class SurfaceController extends SurfaceView implements
 						 */
 						Intent i = new Intent(context, Preview.class);
 						context.startActivity(i);
-
+						((Activity)context).finish();
+							
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

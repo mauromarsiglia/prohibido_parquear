@@ -95,9 +95,14 @@ public class Thanks extends Activity {
 		new SaveInBackground().execute("");
 	}
 
+	@SuppressWarnings("deprecation")
 	public void exit(View view) {
-		//System.exit(0);
-		finish();
+
+		//finish();
+		//finishFromChild();
+		//android.os.Process.killProcess(android.os.Process.myPid());
+		 System.runFinalizersOnExit(true);
+		 System.exit(0);
 	}
 
 	public void nuevoReporte(View view) {

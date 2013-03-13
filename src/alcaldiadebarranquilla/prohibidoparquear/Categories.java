@@ -206,7 +206,7 @@ public class Categories extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog,
 								int which) {
-							finish();
+							Categories.this.finish();
 						}
 
 					}).show();
@@ -238,7 +238,7 @@ public class Categories extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog,
 								int which) {
-							finish();
+							Categories.this.finish();
 						}
 
 					}).show();
@@ -288,7 +288,7 @@ public class Categories extends Activity {
 							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
-								finish();
+								Categories.this.finish();
 							}
 						})
 				.setNegativeButton(R.string.dialog_exit_btn_cancelar,
