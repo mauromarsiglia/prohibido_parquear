@@ -87,7 +87,7 @@ public class Categories extends Activity {
 		Log.i(TAG,Categories.this+"");
 		
 		AppGlobal.getInstance().dispatcher.open(Categories.this,
-				"take", false);
+				"take", true);
 	}
 
 	@Override
@@ -288,7 +288,7 @@ public class Categories extends Activity {
 							@Override
 							public void onClick(final DialogInterface dialog,
 									final int id) {
-								Categories.this.finish();
+								finish();
 							}
 						})
 				.setNegativeButton(R.string.dialog_exit_btn_cancelar,

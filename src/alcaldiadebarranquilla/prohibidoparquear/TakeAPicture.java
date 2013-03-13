@@ -266,6 +266,16 @@ public class TakeAPicture extends Activity {
 	}
 	
 	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AppGlobal.getInstance().dispatcher.open(TakeAPicture.this,
+					"category", true);
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	
 	
 
 

@@ -101,8 +101,9 @@ public class Thanks extends Activity {
 		//finish();
 		//finishFromChild();
 		//android.os.Process.killProcess(android.os.Process.myPid());
-		 System.runFinalizersOnExit(true);
-		 System.exit(0);
+		 //System.runFinalizersOnExit(true);
+		 //System.exit(0);
+		finish();
 	}
 
 	public void nuevoReporte(View view) {
