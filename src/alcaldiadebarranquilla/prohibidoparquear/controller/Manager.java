@@ -44,6 +44,8 @@ public class Manager {
 		this.images = new LinkedList<Bitmap>();
 		this.selectedCategory = 2;
 		this.previewing = false;
+		this.longitude = "0";
+		this.latitude = "0";
 	}
 
 	public void reset() {

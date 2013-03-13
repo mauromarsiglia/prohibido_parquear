@@ -197,7 +197,20 @@ public class SurfaceController extends SurfaceView implements
 
 						// Get image orientation
 						Matrix matrix = new Matrix();
-						matrix.postRotate(90);
+						
+						int orientacion = getResources().getConfiguration().orientation;
+
+
+
+						if (orientacion == Configuration.ORIENTATION_PORTRAIT) {
+							matrix.postRotate(90);
+						}
+
+						if (orientacion == Configuration.ORIENTATION_LANDSCAPE) {
+							matrix.postRotate(0);
+						}
+						
+
 
 						// Generate the small bitmap => 800 x 600
 						Bitmap scaled_bmp = thumbImage(capturedBitmap, 800, 600);

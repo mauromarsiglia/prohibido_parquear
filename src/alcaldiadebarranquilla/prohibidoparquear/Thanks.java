@@ -95,7 +95,7 @@ public class Thanks extends Activity {
 		new SaveInBackground().execute("");
 	}
 
-	@SuppressWarnings("deprecation")
+	
 	public void exit(View view) {
 		finish();
 	}

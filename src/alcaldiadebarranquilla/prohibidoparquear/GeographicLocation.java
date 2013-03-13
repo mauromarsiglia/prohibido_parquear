@@ -16,7 +16,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.os.Bundle;
 
 /**
  * @author Luster
@@ -37,20 +36,20 @@ public class GeographicLocation extends Activity implements LocationListener {
 		if(!isFirst(savedInstanceState)){
 			rotate=true;
 		}
-		Log.i(TAG, rotate+"");
+	
 		
 	}
 	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putString("rotar", "rotar");
+		outState.putString("rotate", "rotate");
 		super.onSaveInstanceState(outState);
 	 }
 
 	
 	private boolean isFirst(Bundle savedInstanceState){
 		if(savedInstanceState!=null){
-			if(savedInstanceState.getString("rotar")!=null){
+			if(savedInstanceState.getString("rotate")!=null){
 				return  false;
 			}else{
 				return true;
@@ -125,7 +124,7 @@ public class GeographicLocation extends Activity implements LocationListener {
 					Double.toString(location.getLatitude()));
 
 			this.manager.removeUpdates(this);
-			// Ir a gracias, puede ser aquí el error
+
 			Log.i("localizacion", "localizacion");
 					if(!rotate){
 						AppGlobal.getInstance().dispatcher.open(
@@ -133,12 +132,7 @@ public class GeographicLocation extends Activity implements LocationListener {
 								"thanks", true);
 					}
 				
-			
-
-			/*Intent intent = new Intent();
-			intent.setClass(this, Thanks.class);
-			startActivity(intent);
-			finish();*/
+		
 		}
 	}
 
