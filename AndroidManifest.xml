@@ -59,7 +59,9 @@
         </activity>
         <activity
             android:name="alcaldiadebarranquilla.prohibidoparquear.Address"
-            android:label="@string/direccion_layout_title" >
+            android:label="@string/direccion_layout_title" 
+            android:screenOrientation="portrait"
+           	android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name="alcaldiadebarranquilla.prohibidoparquear.GeographicLocation"
