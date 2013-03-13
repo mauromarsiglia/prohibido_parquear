@@ -13,7 +13,6 @@ import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
-import android.os.Build;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -124,15 +123,15 @@ public class SurfaceController extends SurfaceView implements
 
 		if (mCamera != null) {
 			// camera.setDisplayOrientation(90);
-			
+
 			int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-			
+
 			if (currentapiVersion >= 8) {
 
 				int orientacion = getResources().getConfiguration().orientation;
-				
+
 				Log.i(TAG, "The current orientation is: "+orientacion);
-				
+
 				if (orientacion == Configuration.ORIENTATION_PORTRAIT) {
 					setDisplayOrientation(mCamera, 90);
 				}

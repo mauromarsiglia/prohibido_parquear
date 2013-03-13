@@ -40,8 +40,6 @@ public class Categories extends Activity {
 
 	private static final String TAG = "Categories";
 	private Manager manager;
-	private static final int SinConexion = 1;
-	private static final int ErrorGeneral = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +71,9 @@ public class Categories extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> array, View view,
 					int position, long id) {
+				
 				Category cat = (Category) array.getItemAtPosition(position);
+				Log.e(TAG, cat+"");
 				CambiarActivity(cat);
 			}
 
@@ -84,8 +84,7 @@ public class Categories extends Activity {
 		
 		Manager manager = Manager.getInstance();
 		manager.setSelectedCategory(cat.getId());
-		
-		
+		Log.i(TAG,Categories.this+"");
 		
 		AppGlobal.getInstance().dispatcher.open(Categories.this,
 				"take", false);
@@ -184,13 +183,68 @@ public class Categories extends Activity {
 		ProgressBar progreso = (ProgressBar) findViewById(R.id.carga_categoria_progreso);
 		progreso.setVisibility(View.GONE);
 		if(!verificaConexion(this)){
-			Log.e(TAG,
-					"Por favor verifique conexion a internet");
-			onCreateDialog(SinConexion);
-			showDialog(SinConexion);
+			new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+			.setTitle(R.string.dialog_no_internet_title)
+			.setMessage(R.string.dialog_no_internet_content_category)
+			.setPositiveButton(
+					R.string.dialog_no_internet_btn_reintentar,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							showProgress();
+							getCategories();
+							dialog.cancel();
+						}
+					})
+			.setNegativeButton(
+					R.string.dialog_no_category_btn_salir,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							finish();
+						}
+
+					}).show();
+	
+
+				
 		}else{
-			onCreateDialog(ErrorGeneral);
-			showDialog(ErrorGeneral);
+
+			new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+			.setTitle(R.string.dialog_no_category_title)
+			.setMessage(R.string.dialog_no_category_content)
+			.setPositiveButton(
+					R.string.dialog_no_category_btn_reintentar,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							showProgress();
+							getCategories();
+							dialog.cancel();
+						}
+					})
+			.setNegativeButton(
+					R.string.dialog_no_category_btn_salir,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							finish();
+						}
+
+					}).show();
+	
+
+			
 			Log.e(TAG,
 					"Error, debe mostrar mensaje de alerta con opcion de reintentar y validad conexion a internet");
 		}
@@ -209,71 +263,10 @@ public class Categories extends Activity {
 	    return bConectado;
 	}
 	
-	protected Dialog onCreateDialog(int id) {
-	    Dialog dialogo = null;
-	 
-	    switch(id)
-	    {
-	        case SinConexion:
-	            dialogo = crearDialogoAlerta();
-	            break;
-	        case ErrorGeneral:
-	            dialogo = crearDialogoConfirmacion();
-	            break;
-	        //...
-	        default:
-	            dialogo = null;
-	            break;
-	    }
-	 
-	    return dialogo;
-	}
 	
-	private Dialog crearDialogoAlerta()
-	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		 
-	    builder.setTitle("Confirmacion");
-	    builder.setMessage("Por favor verifique su conexion a internet");
-	    builder.setPositiveButton("Reintentar", new OnClickListener() {
-	    public void onClick(DialogInterface dialog, int which) {
-	        Log.i("Dialogos", "Confirmacion Aceptada.");
-	        dialog.cancel();
-	        getCategories();
-	    }
-	    });
-	    builder.setNegativeButton("Cancelar", new OnClickListener() {
-	    public void onClick(DialogInterface dialog, int which) {
-	        Log.i("Dialogos", "Confirmacion Cancelada.");
-	        dialog.cancel();
-	    }
-	    });
-	 
-	    return builder.create();
-	}
 	
-	private Dialog crearDialogoConfirmacion()
-	{
-	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	 
-	    builder.setTitle("Confirmacion");
-	    builder.setMessage("Se ha producido un error al momento de listar las categorias");
-	    builder.setPositiveButton("Reintentar", new OnClickListener() {
-	    public void onClick(DialogInterface dialog, int which) {
-	        Log.i("Dialogos", "Confirmacion Aceptada.");
-	        dialog.cancel();
-	        getCategories();
-	    }
-	    });
-	    builder.setNegativeButton("Cancelar", new OnClickListener() {
-	    public void onClick(DialogInterface dialog, int which) {
-	        Log.i("Dialogos", "Confirmacion Cancelada.");
-	        dialog.cancel();
-	    }
-	    });
-	 
-	    return builder.create();
-	}
+	
+	
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -309,6 +302,11 @@ public class Categories extends Activity {
 		final AlertDialog alert = builder.create();
 		alert.show();
 
+	}
+	
+	public void showProgress(){
+		ProgressBar progreso = (ProgressBar) findViewById(R.id.carga_categoria_progreso);
+		progreso.setVisibility(View.VISIBLE);
 	}
 }
 

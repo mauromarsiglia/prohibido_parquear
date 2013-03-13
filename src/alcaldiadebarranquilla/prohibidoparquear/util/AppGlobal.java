@@ -1,6 +1,7 @@
 package alcaldiadebarranquilla.prohibidoparquear.util;
 
 import alcaldiadebarranquilla.prohibidoparquear.Address;
+import alcaldiadebarranquilla.prohibidoparquear.Categories;
 import alcaldiadebarranquilla.prohibidoparquear.GeographicLocation;
 import alcaldiadebarranquilla.prohibidoparquear.Main;
 import alcaldiadebarranquilla.prohibidoparquear.Preview;
@@ -36,6 +37,7 @@ public class AppGlobal {
 		dispatcher.addHandler("geographic", GeographicLocation.class);
 		dispatcher.addHandler("thanks", Thanks.class);
 		dispatcher.addHandler("address", Address.class);
+		dispatcher.addHandler("category", Categories.class);
 
 	}
 

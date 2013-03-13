@@ -69,7 +69,7 @@ public class Thanks extends Activity {
 
 		// requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_thanks);
-		AppConfig.setDeveloperEnviroment();
+		AppConfig.setProductionEnviroment();
 
 		this.mensaje = (TextView) findViewById(R.id.error);
 
@@ -96,13 +96,14 @@ public class Thanks extends Activity {
 	}
 
 	public void exit(View view) {
+		//System.exit(0);
 		finish();
 	}
 
 	public void nuevoReporte(View view) {
 
 		Manager.getInstance().reset();
-		AppGlobal.getInstance().dispatcher.open(Thanks.this, "take", true);
+		AppGlobal.getInstance().dispatcher.open(Thanks.this, "category", true);
 
 	}
 
@@ -218,7 +219,7 @@ public class Thanks extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									AppGlobal.getInstance().dispatcher.open(
-											Thanks.this, "take", true);
+											Thanks.this, "category", true);
 								}
 
 							}).show();

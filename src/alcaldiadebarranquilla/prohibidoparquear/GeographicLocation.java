@@ -98,14 +98,8 @@ public class GeographicLocation extends Activity implements LocationListener {
 
 			this.manager.removeUpdates(this);
 			// Ir a gracias, puede ser aquí el error
-			Log.i("localizacion", "localizacion");
-			// AppGlobal.getInstance().dispatcher.open(GeographicLocation.this,
-			// "thanks", true);
-			
-			Intent intent = new Intent();
-			intent.setClass(this, Thanks.class);
-			startActivity(intent);
-			finish();
+			 AppGlobal.getInstance().dispatcher.open(GeographicLocation.this,
+			 "thanks", true);
 		}
 	}
 

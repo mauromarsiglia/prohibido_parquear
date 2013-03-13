@@ -264,6 +264,9 @@ public class TakeAPicture extends Activity {
 		cursor.close();
 		return orientation;
 	}
+	
+	
+	
 
 
 

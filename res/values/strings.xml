@@ -50,6 +50,7 @@
     <!-- Dialog INTERNET -->
     <string name="dialog_no_internet_title">¡Error de red!</string>
     <string name="dialog_no_internet_content">No fué posible enviar el reporte. Por favor verifique su conexión a internet e inténtelo nuevamente.</string>
+    <string name="dialog_no_internet_content_category">No fue posible obtener las categorias. Por favor verifique su conexión a internet e inténtelo nuevamente.</string>
     <string name="dialog_no_internet_btn_reintentar">Reintentar</string>
     <string name="dialog_no_internet_btn_cancelar">Cancelar</string>
     <string name="dialog_no_internet_error_status_false_send_event">Ocurrio un error a intentar enviar el reporte al servidor\nPor favor intente más tarde.</string>
@@ -84,5 +85,14 @@
     <string name="activity_categorias_listado_categorias">Listado de categorias</string>
     <string name="name_category">Nombre de la categoria</string>
 
+ 
     <string name="categories_layout_list">Lista de categorias</string>
+    
+     <!-- Dialog Categorias -->
+    <string name="dialog_no_category_title">¡Error!</string>
+    <string name="dialog_no_category_content">No fué posible cargar las categorias. Inténtelo nuevamente.</string>
+    <string name="dialog_no_category_btn_reintentar">Reintentar</string>
+    <string name="dialog_no_category_btn_salir">Salir</string>
+
+    
 </resources>
