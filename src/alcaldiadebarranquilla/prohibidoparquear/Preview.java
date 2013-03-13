@@ -8,6 +8,7 @@ import alcaldiadebarranquilla.prohibidoparquear.util.AppGlobal;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -55,6 +56,15 @@ public class Preview extends Activity {
 		image_preview = (ImageView) findViewById(R.id.image_preview);
 		image_preview.setImageBitmap(image);
 
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AppGlobal.getInstance().dispatcher.open(Preview.this,
+					"take", true);
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }

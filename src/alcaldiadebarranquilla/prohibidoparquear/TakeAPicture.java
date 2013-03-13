@@ -41,7 +41,6 @@ public class TakeAPicture extends Activity {
 
 	private SurfaceController mPreview;
 	private ImageButton btn_take_a_pic;
-	private ImageButton btn_gallery;
 	private final String TAG = "TakeAPicture";
 	private static final int SELECT_PHOTO = 100;
 	protected static final int ON_IMAGE_ERROR = 1;
@@ -111,47 +110,6 @@ public class TakeAPicture extends Activity {
 				takePicture();
 			}
 		});
-
-		btn_gallery = (ImageButton) findViewById(R.id.btn_back);
-		btn_gallery.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				openUserGallery();
-			}
-		});
-	}
-
-	protected void openUserGallery() {
-		Log.i(TAG, "openUserGallery");
-		loadIntentForLoadImages();
-	}
-
-	private void loadIntentForLoadImages() {
-		Intent photoPickerIntent = new Intent(Intent.ACTION_PICK,
-				android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		photoPickerIntent.setType("image/*");
-		startActivityForResult(photoPickerIntent, SELECT_PHOTO);
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-		Log.i(TAG, "onActivityResult");
-
-		if (resultCode != RESULT_CANCELED) {
-			if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK
-					&& null != data) {
-				AppGlobal.getInstance().showLoading(TakeAPicture.this,
-						getString(R.string.thanks_layout_espere_texto));
-				Uri selected_image = data.getData();
-				// prepareImageUri(selectedImage);
-				(new PrepareImageTask()).execute(selected_image);
-			} else {
-				Log.e(TAG, "Error selecting image from albums");
-			}
-		}
-		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	private class PrepareImageTask extends AsyncTask<Uri, Integer, Bitmap> {

@@ -38,13 +38,6 @@
             android:background="@android:color/transparent" >
 
             <ImageButton
-                android:id="@+id/btn_back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/btn_gallery"
-                android:scaleType="fitCenter" />
-
-            <ImageButton
                 android:id="@+id/btn_pic"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
