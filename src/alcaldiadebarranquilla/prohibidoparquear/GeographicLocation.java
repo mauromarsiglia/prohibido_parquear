@@ -16,6 +16,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.os.Bundle;
 
 /**
  * @author Luster
@@ -24,14 +25,41 @@ import android.util.Log;
 public class GeographicLocation extends Activity implements LocationListener {
 
 	private LocationManager manager;
-
+	private boolean rotate=false;
+	private String  TAG="GEOGRAPHICLOCATION";
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.acticity_geographic_location);
+		if(!isFirst(savedInstanceState)){
+			rotate=true;
+		}
+		Log.i(TAG, rotate+"");
+		
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putString("rotar", "rotar");
+		super.onSaveInstanceState(outState);
+	 }
 
+	
+	private boolean isFirst(Bundle savedInstanceState){
+		if(savedInstanceState!=null){
+			if(savedInstanceState.getString("rotar")!=null){
+				return  false;
+			}else{
+				return true;
+			}
+		}else{
+			return true;
+		}
+	
+	}
 	private void setGPSLocation() {
 
 		this.manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -99,9 +127,13 @@ public class GeographicLocation extends Activity implements LocationListener {
 			this.manager.removeUpdates(this);
 			// Ir a gracias, puede ser aquí el error
 			Log.i("localizacion", "localizacion");
-			AppGlobal.getInstance().dispatcher.open(
-					GeographicLocation.this,
-					"thanks", true);
+					if(!rotate){
+						AppGlobal.getInstance().dispatcher.open(
+								GeographicLocation.this,
+								"thanks", true);
+					}
+				
+			
 
 			/*Intent intent = new Intent();
 			intent.setClass(this, Thanks.class);
